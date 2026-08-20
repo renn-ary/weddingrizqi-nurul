@@ -106,11 +106,11 @@ function MusicPlayer({ isPlaying, toggle }) {
         onClick={toggle}
       >
         {isPlaying ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#8B1E2D">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
           </svg>
         ) : (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#8B1E2D">
             <path d="M8 5v14l11-7z"/>
           </svg>
         )}
@@ -213,7 +213,7 @@ function CoverPage({ guestName, onOpen }) {
             fontSize: '14px',
             letterSpacing: '6px',
             marginBottom: '16px',
-            color: '#f4e4a3',
+            color: '#D8C3A5',
             textTransform: 'uppercase'
           }}
           animate={{ y: [0, -5, 0] }}
@@ -237,7 +237,7 @@ function CoverPage({ guestName, onOpen }) {
           Rizqi & Nurul
         </motion.h1>
 
-        <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #f4e4a3, transparent)' }} />
+        <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)' }} />
 
         <motion.p
           className="font-poppins"
@@ -253,7 +253,7 @@ function CoverPage({ guestName, onOpen }) {
           className="font-playfair"
           style={{
             fontSize: 'clamp(20px, 5vw, 28px)',
-            color: '#f4e4a3',
+            color: '#D8C3A5',
             marginBottom: '32px',
             fontWeight: 500
           }}
@@ -323,17 +323,17 @@ function CountdownPage({ countdown }) {
         transition={{ delay: 0.3, duration: 0.8 }}
         style={{ textAlign: 'center', transformStyle: 'preserve-3d' }}
       >
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8b7355', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Save The Date
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 60px)', marginBottom: '8px' }}>
           Menuju Bahagia
         </h2>
         <div className="decorative-line" />
-        <p className="font-playfair" style={{ fontSize: 'clamp(18px, 4.5vw, 22px)', color: '#5c4033', marginBottom: '8px', marginTop: '8px' }}>
+        <p className="font-playfair" style={{ fontSize: 'clamp(18px, 4.5vw, 22px)', color: '#252525', marginBottom: '8px', marginTop: '8px' }}>
           15 Juni 2025
         </p>
-        <p className="font-poppins" style={{ fontSize: '14px', color: '#8b7355', marginBottom: '48px' }}>
+        <p className="font-poppins" style={{ fontSize: '14px', color: '#6B6B6B', marginBottom: '48px' }}>
           Minggu • 10.00 WIB
         </p>
       </motion.div>
@@ -359,7 +359,7 @@ function CountdownPage({ countdown }) {
             >
               {String(item.value).padStart(2, '0')}
             </motion.p>
-            <p className="font-poppins" style={{ fontSize: '12px', color: '#8b7355', marginTop: '8px' }}>
+            <p className="font-poppins" style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '8px' }}>
               {item.label}
             </p>
           </motion.div>
@@ -372,10 +372,10 @@ function CountdownPage({ countdown }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <p className="font-poppins" style={{ fontSize: '14px', color: '#8b7355', maxWidth: '320px', lineHeight: 1.8 }}>
+        <p className="font-poppins" style={{ fontSize: '14px', color: '#6B6B6B', maxWidth: '320px', lineHeight: 1.8 }}>
           "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya..."
         </p>
-        <p className="font-playfair" style={{ fontSize: '13px', color: '#d4af37', marginTop: '12px', fontStyle: 'italic' }}>
+        <p className="font-playfair" style={{ fontSize: '13px', color: '#8B1E2D', marginTop: '12px', fontStyle: 'italic' }}>
           — Ar-Rum: 21
         </p>
       </motion.div>
@@ -414,7 +414,7 @@ function DoaPage() {
         >
           🌸
         </motion.div>
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#c97b63', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Doa Pengantin
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
@@ -432,7 +432,7 @@ function DoaPage() {
           backdropFilter: 'blur(10px)',
           borderRadius: '24px',
           padding: '32px 24px',
-          border: '1px solid rgba(212, 175, 55, 0.3)',
+          border: '1px solid #D8C3A5',
           boxShadow: '0 12px 48px rgba(0,0,0,0.08)',
           transformStyle: 'preserve-3d'
         }}
@@ -442,7 +442,7 @@ function DoaPage() {
         transition={{ delay: 0.4, type: 'spring', stiffness: 80 }}
       >
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <p className="font-playfair" style={{ fontSize: '28px', color: '#2d5a3d', direction: 'rtl', lineHeight: 2 }}>
+          <p className="font-playfair" style={{ fontSize: '28px', color: '#8B1E2D', direction: 'rtl', lineHeight: 2 }}>
             بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
           </p>
         </div>
@@ -452,16 +452,16 @@ function DoaPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <p className="font-poppins" style={{ fontSize: '13px', color: '#8b7355', fontStyle: 'italic', textAlign: 'center', marginBottom: '16px' }}>
+          <p className="font-poppins" style={{ fontSize: '13px', color: '#6B6B6B', fontStyle: 'italic', textAlign: 'center', marginBottom: '16px' }}>
             "Semoga Allah memberkahimu dan memberkahi atasmu, serta semoga Allah mengumpulkan kalian berdua dalam kebaikan."
           </p>
-          <p className="font-playfair" style={{ fontSize: '12px', color: '#d4af37', textAlign: 'right', marginBottom: '24px' }}>
+          <p className="font-playfair" style={{ fontSize: '12px', color: '#8B1E2D', textAlign: 'right', marginBottom: '24px' }}>
             — HR. Abu Dawud, Tirmidzi
           </p>
         </motion.div>
 
-        <div style={{ borderTop: '1px dashed rgba(212, 175, 55, 0.4)', paddingTop: '24px' }}>
-          <p className="font-poppins" style={{ fontSize: '14px', color: '#5c4033', textAlign: 'center', lineHeight: 1.9 }}>
+        <div style={{ borderTop: '1px dashed rgba(216, 195, 165, 0.7)', paddingTop: '24px' }}>
+          <p className="font-poppins" style={{ fontSize: '14px', color: '#252525', textAlign: 'center', lineHeight: 1.9 }}>
             Dengan segala kerendahan hati, kami mohon do'a restu Bapak/Ibu/Saudara/i,
             agar pernikahan kami senantiasa dilimpahi keberkahan, kebahagiaan,
             dan ketenangan dunia serta akhirat. Aamiin Ya Rabbal 'Alamin.
@@ -479,14 +479,14 @@ function MempelaiPage() {
       name: 'Rizqi Pratama, S.Kom',
       parent: 'Putra dari Bapak Haji Ahmad Pratama & Ibu Hajah Siti Aminah',
       emoji: '🤵',
-      gradient: 'linear-gradient(135deg, #2d5a3d 0%, #1e3f2a 100%)'
+      gradient: 'linear-gradient(135deg, #8B1E2D 0%, #681520 100%)'
     },
     {
       title: 'Mempelai Wanita',
       name: 'Nurul Aisyah, S.Pd',
       parent: 'Putri dari Bapak Drs. Hadi Wijaya & Ibu Hj. Yulianti',
       emoji: '👰',
-      gradient: 'linear-gradient(135deg, #c97b63 0%, #a85d4a 100%)'
+      gradient: 'linear-gradient(135deg, #A52A3A 0%, #D8C3A5 100%)'
     }
   ]
 
@@ -514,7 +514,7 @@ function MempelaiPage() {
         transition={{ delay: 0.2 }}
         style={{ textAlign: 'center', marginBottom: '40px' }}
       >
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8b7355', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Calon Pengantin
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
@@ -533,7 +533,7 @@ function MempelaiPage() {
               padding: '32px 24px',
               textAlign: 'center',
               boxShadow: '0 16px 56px rgba(0,0,0,0.1)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
+              border: '1px solid #D8C3A5',
               transformStyle: 'preserve-3d',
               position: 'relative',
               overflow: 'hidden'
@@ -572,14 +572,14 @@ function MempelaiPage() {
               {m.emoji}
             </motion.div>
 
-            <p className="font-poppins" style={{ fontSize: '12px', letterSpacing: '4px', color: '#8b7355', textTransform: 'uppercase', marginBottom: '8px' }}>
+            <p className="font-poppins" style={{ fontSize: '12px', letterSpacing: '4px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
               {m.title}
             </p>
             <h3 className="font-playfair gradient-gold" style={{ fontSize: 'clamp(22px, 5.5vw, 28px)', marginBottom: '12px', fontWeight: 600 }}>
               {m.name}
             </h3>
-            <div style={{ width: '40px', height: '2px', background: 'linear-gradient(90deg, transparent, #d4af37, transparent)', margin: '0 auto 16px' }} />
-            <p className="font-poppins" style={{ fontSize: '13px', color: '#6b5b4f', lineHeight: 1.7 }}>
+            <div style={{ width: '40px', height: '2px', background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)', margin: '0 auto 16px' }} />
+            <p className="font-poppins" style={{ fontSize: '13px', color: '#6B6B6B', lineHeight: 1.7 }}>
               {m.parent}
             </p>
           </motion.div>
@@ -591,7 +591,7 @@ function MempelaiPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1, type: 'spring' }}
         >
-          <div className="font-great-vibes" style={{ fontSize: '48px', color: '#d4af37' }}>&</div>
+          <div className="font-great-vibes" style={{ fontSize: '48px', color: '#8B1E2D' }}>&</div>
         </motion.div>
       </div>
     </motion.div>
@@ -654,7 +654,7 @@ function AcaraPage() {
         transition={{ delay: 0.2 }}
         style={{ textAlign: 'center', marginBottom: '40px' }}
       >
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#c97b63', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Rangkaian Acara
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
@@ -672,7 +672,7 @@ function AcaraPage() {
               borderRadius: '20px',
               padding: '28px 24px',
               boxShadow: '0 12px 48px rgba(0,0,0,0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.25)',
+              border: '1px solid #D8C3A5',
               transformStyle: 'preserve-3d'
             }}
             className="card-3d"
@@ -686,7 +686,7 @@ function AcaraPage() {
                   width: '56px',
                   height: '56px',
                   borderRadius: '16px',
-                  background: 'linear-gradient(135deg, #fdf6e3 0%, #f5e6b8 100%)',
+                  background: 'linear-gradient(135deg, #F1E9DF 0%, #D8C3A5 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -699,16 +699,16 @@ function AcaraPage() {
                 {a.icon}
               </motion.div>
               <div style={{ flex: 1 }}>
-                <h3 className="font-playfair" style={{ fontSize: '18px', color: '#5c4033', marginBottom: '6px', fontWeight: 600 }}>
+                <h3 className="font-playfair" style={{ fontSize: '18px', color: '#252525', marginBottom: '6px', fontWeight: 600 }}>
                   {a.title}
                 </h3>
-                <p className="font-poppins" style={{ fontSize: '13px', color: '#d4af37', fontWeight: 500, marginBottom: '4px' }}>
+                <p className="font-poppins" style={{ fontSize: '13px', color: '#8B1E2D', fontWeight: 500, marginBottom: '4px' }}>
                   {a.date}
                 </p>
-                <p className="font-poppins" style={{ fontSize: '13px', color: '#8b7355', marginBottom: '4px' }}>
+                <p className="font-poppins" style={{ fontSize: '13px', color: '#6B6B6B', marginBottom: '4px' }}>
                   ⏰ {a.time}
                 </p>
-                <p className="font-poppins" style={{ fontSize: '13px', color: '#6b5b4f' }}>
+                <p className="font-poppins" style={{ fontSize: '13px', color: '#3A3A3A' }}>
                   📍 {a.place}
                 </p>
               </div>
@@ -779,16 +779,16 @@ function GiftPage({ onCopy }) {
       number: BNI_NUMBER,
       holder: BNI_HOLDER,
       logo: '🏦',
-      color: '#005599',
-      bgGradient: 'linear-gradient(135deg, #005599 0%, #0077cc 100%)'
+      color: '#8B1E2D',
+      bgGradient: 'linear-gradient(135deg, #8B1E2D 0%, #681520 100%)'
     },
     {
       name: 'Bank BCA',
       number: BCA_NUMBER,
       holder: BCA_HOLDER,
-      logo: '💙',
-      color: '#1a4b9d',
-      bgGradient: 'linear-gradient(135deg, #1a4b9d 0%, #2d6fd9 100%)'
+      logo: '💳',
+      color: '#681520',
+      bgGradient: 'linear-gradient(135deg, #A52A3A 0%, #8B1E2D 100%)'
     }
   ]
 
@@ -822,7 +822,7 @@ function GiftPage({ onCopy }) {
         >
           🎁
         </motion.div>
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8b7355', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Wedding Gift
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
@@ -831,7 +831,7 @@ function GiftPage({ onCopy }) {
         <div className="decorative-line" />
         <motion.p
           className="font-poppins"
-          style={{ fontSize: '13px', color: '#8b7355', maxWidth: '360px', lineHeight: 1.8, marginTop: '16px' }}
+          style={{ fontSize: '13px', color: '#6B6B6B', maxWidth: '360px', lineHeight: 1.8, marginTop: '16px' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -868,10 +868,10 @@ function GiftPage({ onCopy }) {
                 {bank.logo}
               </div>
               <div>
-                <h3 className="font-playfair" style={{ fontSize: '20px', color: '#333', fontWeight: 600 }}>
+                <h3 className="font-playfair" style={{ fontSize: '20px', color: '#252525', fontWeight: 600 }}>
                   {bank.name}
                 </h3>
-                <p className="font-poppins" style={{ fontSize: '12px', color: '#888' }}>
+                <p className="font-poppins" style={{ fontSize: '12px', color: '#6B6B6B' }}>
                   a.n. {bank.holder}
                 </p>
               </div>
@@ -879,14 +879,14 @@ function GiftPage({ onCopy }) {
 
             <div
               style={{
-                background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)',
+                background: 'linear-gradient(135deg, #F8F7F5 0%, #F1E9DF 100%)',
                 borderRadius: '12px',
                 padding: '16px 20px',
-                border: '1px dashed rgba(212, 175, 55, 0.5)',
+                border: '1px dashed #D8C3A5',
                 marginBottom: '16px'
               }}
             >
-              <p className="font-poppins" style={{ fontSize: '11px', color: '#999', marginBottom: '4px' }}>
+              <p className="font-poppins" style={{ fontSize: '11px', color: '#6B6B6B', marginBottom: '4px' }}>
                 Nomor Rekening
               </p>
               <p
@@ -924,7 +924,7 @@ function GiftPage({ onCopy }) {
         style={{
           marginTop: '36px',
           fontSize: '12px',
-          color: '#8b7355',
+          color: '#6B6B6B',
           textAlign: 'center',
           maxWidth: '360px',
           lineHeight: 1.8,
@@ -980,7 +980,7 @@ function GalleryPage() {
         >
           📸
         </motion.div>
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#c97b63', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Galeri Cerita
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
@@ -1058,7 +1058,7 @@ function GalleryPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
       >
-        <p className="font-poppins" style={{ fontSize: '13px', color: '#8b7355', lineHeight: 1.9, fontStyle: 'italic' }}>
+        <p className="font-poppins" style={{ fontSize: '13px', color: '#6B6B6B', lineHeight: 1.9, fontStyle: 'italic' }}>
           "Setiap foto adalah kenangan yang telah membekas,
           menjadi saksi perjalanan cinta kami menuju hari bahagia."
         </p>
@@ -1079,7 +1079,7 @@ function PenutupPage() {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        background: 'linear-gradient(180deg, #1a1a2e 0%, #2d1f3d 50%, #1a1a2e 100%)',
+        background: 'linear-gradient(180deg, #252525 0%, #3A1520 35%, #681520 70%, #252525 100%)',
         overflow: 'hidden'
       }}
       initial={{ opacity: 0 }}
@@ -1098,9 +1098,9 @@ function PenutupPage() {
               position: 'absolute',
               width: '2px',
               height: '2px',
-              background: '#f4e4a3',
+              background: '#D8C3A5',
               borderRadius: '50%',
-              boxShadow: '0 0 6px #d4af37',
+              boxShadow: '0 0 6px #D8C3A5, 0 0 12px #A52A3A',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`
             }}
@@ -1130,12 +1130,12 @@ function PenutupPage() {
           style={{ marginBottom: '20px', display: 'inline-block' }}
         >
           <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="28" stroke="#d4af37" strokeWidth="1" strokeDasharray="4 4" />
-            <path d="M30 18 L34 28 L44 28 L36 35 L39 45 L30 39 L21 45 L24 35 L16 28 L26 28 Z" fill="#d4af37" opacity="0.9" />
+            <circle cx="30" cy="30" r="28" stroke="#D8C3A5" strokeWidth="1" strokeDasharray="4 4" />
+            <path d="M30 18 L34 28 L44 28 L36 35 L39 45 L30 39 L21 45 L24 35 L16 28 L26 28 Z" fill="#8B1E2D" opacity="0.95" stroke="#D8C3A5" strokeWidth="0.5" />
           </svg>
         </motion.div>
 
-        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#f4e4a3', textTransform: 'uppercase', marginBottom: '12px', opacity: 0.8 }}>
+        <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#D8C3A5', textTransform: 'uppercase', marginBottom: '12px', opacity: 0.9 }}>
           Terima Kasih
         </p>
         <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 64px)', marginBottom: '8px' }}>
@@ -1189,13 +1189,13 @@ function PenutupPage() {
         <div
           style={{
             padding: '14px 28px',
-            border: '1px solid rgba(212, 175, 55, 0.4)',
+            border: '1px solid rgba(216, 195, 165, 0.6)',
             borderRadius: '50px',
-            background: 'rgba(212, 175, 55, 0.1)',
+            background: 'rgba(139, 30, 45, 0.25)',
             backdropFilter: 'blur(5px)'
           }}
         >
-          <p className="font-playfair" style={{ color: '#f4e4a3', fontSize: '14px', textAlign: 'center', letterSpacing: '2px' }}>
+          <p className="font-playfair" style={{ color: '#D8C3A5', fontSize: '14px', textAlign: 'center', letterSpacing: '2px' }}>
             Wassalamu'alaikum Warahmatullahi Wabarakatuh
           </p>
         </div>

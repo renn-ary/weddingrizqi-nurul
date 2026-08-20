@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const WEDDING_DATE = new Date('2026-09-19T10:00:00')
 const WEDDING_LOCATION = 'Masjid Agung Jawa Tengah, Semarang'
-const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah+Semarang'
+const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah+Semarang'
 const BNI_NUMBER = '1234567890'
 const BCA_NUMBER = '0987654321'
 const BNI_HOLDER = 'Rizqi Pratama'

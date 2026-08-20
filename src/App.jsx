@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const WEDDING_DATE = new Date('2025-06-15T10:00:00')
+const WEDDING_DATE = new Date('2026-09-19T10:00:00')
 const WEDDING_LOCATION = 'Masjid Agung Jawa Tengah, Semarang'
-const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah+Semarang'
+const MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah+Semarang'
 const BNI_NUMBER = '1234567890'
 const BCA_NUMBER = '0987654321'
 const BNI_HOLDER = 'Rizqi Pratama'
@@ -99,7 +100,7 @@ function MusicPlayer({ isPlaying, toggle }) {
       <audio
         ref={audioRef}
         loop
-        src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"
+        src={`${import.meta.env.BASE_URL}Assets/Audio/wedding.mp3`}
       />
       <div
         className={`music-player ${isPlaying ? 'playing' : ''}`}
@@ -168,8 +169,7 @@ function CoverPage({ guestName, onOpen }) {
     <motion.div
       className="page-container"
       style={{
-        backgroundImage: `url('/Assets/Image/covermempelai.jpeg')`,
-        backgroundSize: 'cover',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/covermempelai.jpeg')`,        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
@@ -732,7 +732,7 @@ function AcaraPage() {
         transition={{ delay: 0.8, type: 'spring' }}
       >
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.9324641199374!2d110.40549981477662!3d-6.983703270362312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b57e0f1b087%3A0x2001c68be4ab6a92!2sMasjid%20Agung%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1698765432100"
+          src="https://www.google.com/maps/embed?pb=..."
           width="100%"
           height="200"
           style={{ border: 0, display: 'block' }}
@@ -945,12 +945,12 @@ function GiftPage({ onCopy }) {
 
 function GalleryPage() {
   const images = [
-    '/Assets/Image/covermempelai.jpeg',
-    '/Assets/Image/gallery.jpeg',
-    '/Assets/Image/gallery1.jpeg',
-    '/Assets/Image/gallery2.jpeg',
-    '/Assets/Image/gallery3.jpeg'
-  ]
+  `${import.meta.env.BASE_URL}Assets/Image/covermempelai.jpeg`,
+  `${import.meta.env.BASE_URL}Assets/Image/gallery.jpeg`,
+  `${import.meta.env.BASE_URL}Assets/Image/gallery1.jpeg`,
+  `${import.meta.env.BASE_URL}Assets/Image/gallery2.jpeg`,
+  `${import.meta.env.BASE_URL}Assets/Image/gallery3.jpeg`
+]
 
   return (
     <motion.div

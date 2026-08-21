@@ -199,90 +199,97 @@ function CoverPage({ guestName, onOpen }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
-          padding: '24px 20px',
+          justifyContent: 'flex-start',
+          paddingLeft: '20px',
+          paddingRight: '20px',
           boxSizing: 'border-box',
           textAlign: 'center',
           color: 'white',
           overflow: 'hidden'
         }}
-        initial={{ y: 90, opacity: 0 }}
-        animate={{ y: 40, opacity: 1 }}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <motion.div
-          className="font-libre-franklin"
-          style={{
-            fontSize: '14px',
-            letterSpacing: '6px',
-            marginBottom: '10px',
-            color: '#D8C3A5',
-            textTransform: 'uppercase'
-          }}
-          animate={{ y: [0, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          The Wedding Of
-        </motion.div>
+        <div style={{ flex: '80 1 0%', minHeight: 0, width: '100%' }} aria-hidden="true" />
 
-        <motion.h1
-          className="font-anthela"
-          style={{
-            fontSize: 'clamp(40px, 10vw, 72px)',
-            lineHeight: 1.05,
-            marginBottom: '14px',
-            color: '#8B1E2D',
-            textShadow: '0 4px 20px rgba(0,0,0,0.5)'
-          }}
-          initial={{ scale: 0.5, rotate: -10 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
-        >
-          Rizqi & Nurul
-        </motion.h1>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '8px' }}>
+          <motion.div
+            className="font-libre-franklin"
+            style={{
+              fontSize: '14px',
+              letterSpacing: '6px',
+              marginBottom: '10px',
+              color: '#D8C3A5',
+              textTransform: 'uppercase'
+            }}
+            animate={{ y: [0, -5, 0] }}
+            transition={{ repeat: Infinity, duration: 3 }}
+          >
+            The Wedding Of
+          </motion.div>
 
-        <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)' }} />
+          <motion.h1
+            className="font-anthela"
+            style={{
+              fontSize: 'clamp(40px, 10vw, 72px)',
+              lineHeight: 1.05,
+              marginBottom: '14px',
+              color: '#8B1E2D',
+              textShadow: '0 4px 20px rgba(0,0,0,0.5)'
+            }}
+            initial={{ scale: 0.5, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
+          >
+            Rizqi & Nurul
+          </motion.h1>
 
-        <motion.p
-          className="font-libre-franklin"
-          style={{ fontSize: '14px', opacity: 0.8, marginTop: '6px', marginBottom: '2px' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
-          transition={{ delay: 1.2 }}
-        >
-          Dear :
-        </motion.p>
+          <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)' }} />
 
-        <motion.p
-          className="font-playfair"
-          style={{
-            fontSize: 'clamp(18px, 4.5vw, 26px)',
-            color: '#D8C3A5',
-            marginBottom: '20px',
-            fontWeight: 500
-          }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4 }}
-        >
-          {guestName}
-        </motion.p>
+          <motion.p
+            className="font-libre-franklin"
+            style={{ fontSize: '14px', opacity: 0.8, marginTop: '6px', marginBottom: '2px' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
+            transition={{ delay: 1.2 }}
+          >
+            Dear :
+          </motion.p>
 
-        <motion.button
-          className="btn-primary"
-          onClick={onOpen}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1.6 },
-            y: { delay: 1.6, repeat: Infinity, duration: 2 }
-          }}
-          style={{ position: 'relative', zIndex: 10 }}
-        >
-          Buka Undangan
-        </motion.button>
+          <motion.p
+            className="font-playfair"
+            style={{
+              fontSize: 'clamp(18px, 4.5vw, 26px)',
+              color: '#D8C3A5',
+              marginBottom: '20px',
+              fontWeight: 500
+            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4 }}
+          >
+            {guestName}
+          </motion.p>
+
+          <motion.button
+            className="btn-primary"
+            onClick={onOpen}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{
+              opacity: { delay: 1.6 },
+              y: { delay: 1.6, repeat: Infinity, duration: 2 }
+            }}
+            style={{ position: 'relative', zIndex: 10 }}
+          >
+            Buka Undangan
+          </motion.button>
+        </div>
+
+        <div style={{ flex: '20 1 0%', minHeight: 0, width: '100%' }} aria-hidden="true" />
       </motion.div>
     </motion.div>
   )

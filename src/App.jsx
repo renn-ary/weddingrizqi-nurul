@@ -206,8 +206,8 @@ function CoverPage({ guestName, onOpen }) {
           color: 'white',
           overflow: 'hidden'
         }}
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: 70, opacity: 0 }}
+        animate={{ y: 20, opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
         <motion.div

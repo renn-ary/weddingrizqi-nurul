@@ -197,7 +197,7 @@ function CoverPage({ guestName, onOpen }) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'flex-start',
-          paddingTop: '60vh',
+          paddingTop: 'calc(60vh - 40px)',
           paddingLeft: '20px',
           paddingRight: '20px',
           textAlign: 'center',
@@ -208,7 +208,7 @@ function CoverPage({ guestName, onOpen }) {
         transition={{ delay: 0.5, duration: 1 }}
       >
         <motion.div
-          className="font-poppins"
+          className="font-libre-franklin"
           style={{
             fontSize: '14px',
             letterSpacing: '6px',
@@ -223,11 +223,12 @@ function CoverPage({ guestName, onOpen }) {
         </motion.div>
 
         <motion.h1
-          className="font-great-vibes gradient-gold"
+          className="font-anthela"
           style={{
             fontSize: 'clamp(48px, 12vw, 80px)',
             lineHeight: 1.1,
             marginBottom: '20px',
+            color: '#8B1E2D',
             textShadow: '0 4px 20px rgba(0,0,0,0.5)'
           }}
           initial={{ scale: 0.5, rotate: -10 }}
@@ -270,22 +271,15 @@ function CoverPage({ guestName, onOpen }) {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{
+            opacity: { delay: 1.6 },
+            y: { delay: 1.6, repeat: Infinity, duration: 2 }
+          }}
           style={{ position: 'relative', zIndex: 10 }}
         >
           Buka Undangan
         </motion.button>
-
-        <motion.div
-          style={{ marginTop: '40px', opacity: 0.6 }}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-            <path d="M12 5v14M19 12l-7 7-7-7" />
-          </svg>
-        </motion.div>
       </motion.div>
     </motion.div>
   )
@@ -326,7 +320,7 @@ function CountdownPage({ countdown }) {
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Save The Date
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 60px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(44px, 11vw, 64px)', marginBottom: '8px', fontWeight: 400 }}>
           Menuju Bahagia
         </h2>
         <div className="decorative-line" />
@@ -417,7 +411,7 @@ function DoaPage() {
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Doa Pengantin
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 56px)', marginBottom: '8px', fontWeight: 400 }}>
           Berkah Suci
         </h2>
         <div className="decorative-line" />
@@ -575,7 +569,7 @@ function MempelaiPage() {
             <p className="font-poppins" style={{ fontSize: '12px', letterSpacing: '4px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
               {m.title}
             </p>
-            <h3 className="font-playfair gradient-gold" style={{ fontSize: 'clamp(22px, 5.5vw, 28px)', marginBottom: '12px', fontWeight: 600 }}>
+            <h3 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(26px, 6.5vw, 32px)', marginBottom: '12px', fontWeight: 400 }}>
               {m.name}
             </h3>
             <div style={{ width: '40px', height: '2px', background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)', margin: '0 auto 16px' }} />
@@ -825,7 +819,7 @@ function GiftPage({ onCopy }) {
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Wedding Gift
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 56px)', marginBottom: '8px', fontWeight: 400 }}>
           Kado Bahagia
         </h2>
         <div className="decorative-line" />
@@ -872,7 +866,7 @@ function GiftPage({ onCopy }) {
                   {bank.name}
                 </h3>
                 <p className="font-poppins" style={{ fontSize: '12px', color: '#6B6B6B' }}>
-                  a.n. {bank.holder}
+                  a.n. <span className="font-anthela" style={{ fontSize: '18px', color: '#8B1E2D' }}>{bank.holder}</span>
                 </p>
               </div>
             </div>
@@ -1138,7 +1132,7 @@ function PenutupPage() {
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#D8C3A5', textTransform: 'uppercase', marginBottom: '12px', opacity: 0.9 }}>
           Terima Kasih
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 64px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(44px, 11vw, 68px)', marginBottom: '8px', fontWeight: 400 }}>
           Atas Kehadiran
         </h2>
         <div className="decorative-line" />
@@ -1172,7 +1166,7 @@ function PenutupPage() {
         <p className="font-poppins" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginBottom: '8px', letterSpacing: '3px' }}>
           KAMI YANG BERBAHAGIA
         </p>
-        <h3 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(32px, 8vw, 48px)', marginBottom: '4px' }}>
+        <h3 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '4px', fontWeight: 400 }}>
           Rizqi & Nurul
         </h3>
         <p className="font-playfair" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontStyle: 'italic' }}>

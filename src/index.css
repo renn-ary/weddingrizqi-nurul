@@ -135,6 +135,14 @@ h2 {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  outline: none;
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible,
+.btn-primary:active {
+  outline: none;
+  border-color: var(--champagne);
 }
 
 .btn-primary::before {
@@ -155,7 +163,7 @@ h2 {
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 12px 40px rgba(139, 30, 45, 0.55);
-  border-color: #fff;
+  border-color: var(--champagne);
 }
 
 .btn-gift {

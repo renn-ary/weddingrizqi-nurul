@@ -241,7 +241,7 @@ function CoverPage({ guestName, onOpen }) {
         <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)' }} />
 
         <motion.p
-          className="font-poppins"
+          className="font-libre-franklin"
           style={{ fontSize: '14px', opacity: 0.8, marginTop: '8px', marginBottom: '4px' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
@@ -295,7 +295,7 @@ function CountdownPage({ countdown }) {
 
   return (
     <motion.div
-      className="page-container bg-soft-cream"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -303,19 +303,24 @@ function CountdownPage({ countdown }) {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
       <Sparkles count={15} />
 
       <motion.div
         initial={{ opacity: 0, rotateY: -90 }}
         animate={{ opacity: 1, rotateY: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        style={{ textAlign: 'center', transformStyle: 'preserve-3d' }}
+        style={{ textAlign: 'center', transformStyle: 'preserve-3d', position: 'relative', zIndex: 1 }}
       >
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Save The Date
@@ -332,7 +337,7 @@ function CountdownPage({ countdown }) {
         </p>
       </motion.div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', width: '100%', maxWidth: '420px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
         {items.map((item, i) => (
           <motion.div
             key={item.label}
@@ -361,7 +366,7 @@ function CountdownPage({ countdown }) {
       </div>
 
       <motion.div
-        style={{ marginTop: '48px', textAlign: 'center' }}
+        style={{ marginTop: '48px', textAlign: 'center', position: 'relative', zIndex: 1 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
@@ -380,7 +385,7 @@ function CountdownPage({ countdown }) {
 function DoaPage() {
   return (
     <motion.div
-      className="page-container bg-soft-peach"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -388,19 +393,24 @@ function DoaPage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
       <Sparkles count={12} />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        style={{ textAlign: 'center' }}
+        style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}
       >
         <motion.div
           className="ornament floating-animation"
@@ -428,7 +438,9 @@ function DoaPage() {
           padding: '32px 24px',
           border: '1px solid #D8C3A5',
           boxShadow: '0 12px 48px rgba(0,0,0,0.08)',
-          transformStyle: 'preserve-3d'
+          transformStyle: 'preserve-3d',
+          position: 'relative',
+          zIndex: 1
         }}
         className="card-3d"
         initial={{ opacity: 0, rotateY: 45, x: 100 }}
@@ -486,7 +498,7 @@ function MempelaiPage() {
 
   return (
     <motion.div
-      className="page-container bg-soft-cream"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -494,30 +506,35 @@ function MempelaiPage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
       <Sparkles count={15} />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
-        style={{ textAlign: 'center', marginBottom: '40px' }}
+        style={{ textAlign: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}
       >
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#6B6B6B', textTransform: 'uppercase', marginBottom: '8px' }}>
           Calon Pengantin
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 56px)', marginBottom: '8px', fontWeight: 400 }}>
           Kedua Mempelai
         </h2>
         <div className="decorative-line" />
       </motion.div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '100%', maxWidth: '420px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
         {mempelai.map((m, i) => (
           <motion.div
             key={m.name}
@@ -580,7 +597,7 @@ function MempelaiPage() {
         ))}
 
         <motion.div
-          style={{ textAlign: 'center', padding: '8px 0' }}
+          style={{ textAlign: 'center', padding: '8px 0', position: 'relative', zIndex: 1 }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1, type: 'spring' }}
@@ -626,7 +643,7 @@ function AcaraPage() {
 
   return (
     <motion.div
-      className="page-container bg-soft-peach"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -634,30 +651,35 @@ function AcaraPage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
       <Sparkles count={12} />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        style={{ textAlign: 'center', marginBottom: '40px' }}
+        style={{ textAlign: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}
       >
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Rangkaian Acara
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 56px)', marginBottom: '8px', fontWeight: 400 }}>
           Waktu & Tempat
         </h2>
         <div className="decorative-line" />
       </motion.div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '420px', marginBottom: '36px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '420px', marginBottom: '36px', position: 'relative', zIndex: 1 }}>
         {acara.map((a, i) => (
           <motion.div
             key={a.title}
@@ -718,7 +740,9 @@ function AcaraPage() {
           borderRadius: '20px',
           overflow: 'hidden',
           boxShadow: '0 16px 56px rgba(0,0,0,0.15)',
-          marginBottom: '24px'
+          marginBottom: '24px',
+          position: 'relative',
+          zIndex: 1
         }}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -736,7 +760,7 @@ function AcaraPage() {
         />
       </motion.div>
 
-      <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '420px' }}>
+      <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
         <motion.button
           className="btn-primary"
           style={{ flex: 1, padding: '14px 20px', fontSize: '14px' }}
@@ -788,7 +812,7 @@ function GiftPage({ onCopy }) {
 
   return (
     <motion.div
-      className="page-container bg-soft-cream"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -796,19 +820,24 @@ function GiftPage({ onCopy }) {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
       <Sparkles count={15} />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        style={{ textAlign: 'center', marginBottom: '40px' }}
+        style={{ textAlign: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}
       >
         <motion.div
           className="floating-animation"
@@ -835,7 +864,7 @@ function GiftPage({ onCopy }) {
         </motion.p>
       </motion.div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '420px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 }}>
         {banks.map((bank, i) => (
           <motion.div
             key={bank.name}
@@ -947,26 +976,31 @@ function GalleryPage() {
 
   return (
     <motion.div
-      className="page-container bg-soft-peach"
+      className="page-container"
       style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         padding: '60px 24px',
-        position: 'relative'
+        position: 'relative',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
       <Sparkles count={12} />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        style={{ textAlign: 'center', marginBottom: '40px' }}
+        style={{ textAlign: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}
       >
         <motion.div
           className="floating-animation"
@@ -977,7 +1011,7 @@ function GalleryPage() {
         <p className="font-poppins" style={{ fontSize: '13px', letterSpacing: '5px', color: '#8B1E2D', textTransform: 'uppercase', marginBottom: '8px' }}>
           Galeri Cerita
         </p>
-        <h2 className="font-great-vibes gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '8px' }}>
+        <h2 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(40px, 10vw, 56px)', marginBottom: '8px', fontWeight: 400 }}>
           Kenangan Kami
         </h2>
         <div className="decorative-line" />
@@ -990,7 +1024,9 @@ function GalleryPage() {
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '12px',
-          marginBottom: '20px'
+          marginBottom: '20px',
+          position: 'relative',
+          zIndex: 1
         }}
       >
         {images.map((img, i) => {
@@ -1046,7 +1082,9 @@ function GalleryPage() {
         style={{
           marginTop: '16px',
           textAlign: 'center',
-          maxWidth: '360px'
+          maxWidth: '360px',
+          position: 'relative',
+          zIndex: 1
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1237,7 +1275,15 @@ export default function App() {
 
   const navigateTo = (page) => {
     if (page >= 0 && page < totalPages) {
-      setCurrentPage(page)
+      if (page === 0) {
+        setCurrentPage(0)
+        setIsCoverOpen(false)
+        setIsMusicPlaying(false)
+        setMusicEnabled(false)
+      } else {
+        if (!isCoverOpen) setIsCoverOpen(true)
+        setCurrentPage(page)
+      }
     }
   }
 
@@ -1279,6 +1325,16 @@ export default function App() {
     }
   }, [currentPage, isCoverOpen])
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        setIsMusicPlaying(false)
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
+
   const handleCopy = () => {
     setShowCopyToast(true)
   }
@@ -1306,9 +1362,15 @@ export default function App() {
           {currentPage === 0 && (
             <motion.div
               key="cover"
-              initial={{ y: 0 }}
-              animate={isCoverOpen ? { y: '-100vh', rotateX: -15, opacity: 0.5 } : { y: 0, rotateX: 0, opacity: 1 }}
-              transition={isCoverOpen ? { duration: 1.2, ease: [0.76, 0, 0.24, 1] } : { duration: 0.5 }}
+              initial={isCoverOpen ? { y: 0, rotateX: 0, opacity: 1 } : { y: 0, rotateX: 0, opacity: 1 }}
+              animate={isCoverOpen
+                ? { y: '-100vh', rotateX: -15, opacity: 0.5 }
+                : { y: 0, rotateX: 0, opacity: 1 }
+              }
+              transition={isCoverOpen
+                ? { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+                : { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+              }
               style={{
                 position: 'fixed',
                 top: 0,

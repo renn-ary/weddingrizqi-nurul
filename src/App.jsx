@@ -168,12 +168,14 @@ function CoverPage({ guestName, onOpen }) {
     <motion.div
       className="page-container"
       style={{
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/covermempelai.jpeg')`,        backgroundSize: 'cover',
+        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/covermempelai.jpeg')`,
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
-        minHeight: '100vh',
-        width: '100%'
+        height: '100vh',
+        width: '100%',
+        overflow: 'hidden'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -192,16 +194,17 @@ function CoverPage({ guestName, onOpen }) {
         style={{
           position: 'relative',
           zIndex: 2,
-          minHeight: '100vh',
+          height: '100vh',
+          maxHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'flex-start',
-          paddingTop: 'calc(60vh - 40px)',
-          paddingLeft: '20px',
-          paddingRight: '20px',
+          justifyContent: 'center',
+          padding: '24px 20px',
+          boxSizing: 'border-box',
           textAlign: 'center',
-          color: 'white'
+          color: 'white',
+          overflow: 'hidden'
         }}
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -212,7 +215,7 @@ function CoverPage({ guestName, onOpen }) {
           style={{
             fontSize: '14px',
             letterSpacing: '6px',
-            marginBottom: '16px',
+            marginBottom: '10px',
             color: '#D8C3A5',
             textTransform: 'uppercase'
           }}
@@ -225,9 +228,9 @@ function CoverPage({ guestName, onOpen }) {
         <motion.h1
           className="font-anthela"
           style={{
-            fontSize: 'clamp(48px, 12vw, 80px)',
-            lineHeight: 1.1,
-            marginBottom: '20px',
+            fontSize: 'clamp(40px, 10vw, 72px)',
+            lineHeight: 1.05,
+            marginBottom: '14px',
             color: '#8B1E2D',
             textShadow: '0 4px 20px rgba(0,0,0,0.5)'
           }}
@@ -242,7 +245,7 @@ function CoverPage({ guestName, onOpen }) {
 
         <motion.p
           className="font-libre-franklin"
-          style={{ fontSize: '14px', opacity: 0.8, marginTop: '8px', marginBottom: '4px' }}
+          style={{ fontSize: '14px', opacity: 0.8, marginTop: '6px', marginBottom: '2px' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 1.2 }}
@@ -253,9 +256,9 @@ function CoverPage({ guestName, onOpen }) {
         <motion.p
           className="font-playfair"
           style={{
-            fontSize: 'clamp(20px, 5vw, 28px)',
+            fontSize: 'clamp(18px, 4.5vw, 26px)',
             color: '#D8C3A5',
-            marginBottom: '32px',
+            marginBottom: '20px',
             fontWeight: 500
           }}
           initial={{ opacity: 0, y: 10 }}
@@ -1334,6 +1337,20 @@ export default function App() {
     document.addEventListener('visibilitychange', handleVisibilityChange)
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
   }, [])
+
+  useEffect(() => {
+    if (!isCoverOpen || currentPage === 0) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+      document.documentElement.style.overflow = 'auto'
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+      document.documentElement.style.overflow = 'auto'
+    }
+  }, [isCoverOpen, currentPage])
 
   const handleCopy = () => {
     setShowCopyToast(true)

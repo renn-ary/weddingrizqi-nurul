@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const WEDDING_DATE = new Date('2026-09-19T10:00:00')
+const WEDDING_DATE = new Date('2026-04-06T10:00:00')
 const WEDDING_LOCATION = 'Masjid Agung Jawa Tengah, Semarang'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah+Semarang'
 const BNI_NUMBER = '1234567890'
@@ -13,7 +13,7 @@ function useCountdown(targetDate) {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const update = () => {
       const now = new Date().getTime()
       const distance = targetDate.getTime() - now
       if (distance > 0) {
@@ -24,7 +24,9 @@ function useCountdown(targetDate) {
           seconds: Math.floor((distance % (1000 * 60)) / 1000)
         })
       }
-    }, 1000)
+    }
+    update()
+    const interval = setInterval(update, 1000)
     return () => clearInterval(interval)
   }, [targetDate])
 
@@ -72,7 +74,7 @@ function CopySuccessToast({ show, onClose }) {
   )
 }
 
-function MusicPlayer({ isPlaying, toggle }) {
+function MusicPlayer({ isPlaying, toggle, hiddenOnScroll, scrolling }) {
   const audioRef = useRef(null)
   const [audioReady, setAudioReady] = useState(false)
 
@@ -102,7 +104,7 @@ function MusicPlayer({ isPlaying, toggle }) {
         src={`${import.meta.env.BASE_URL}Assets/Audio/wedding.mp3`}
       />
       <div
-        className={`music-player ${isPlaying ? 'playing' : ''}`}
+        className={`music-player ${isPlaying ? 'playing' : ''} ${hiddenOnScroll ? 'scrolling' : ''} ${scrolling ? 'scrolling' : ''}`}
         onClick={toggle}
       >
         {isPlaying ? (
@@ -119,10 +121,10 @@ function MusicPlayer({ isPlaying, toggle }) {
   )
 }
 
-function NavigationDots({ currentPage, totalPages, onNavigate, showNav }) {
+function NavigationDots({ currentPage, totalPages, onNavigate, showNav, navHidden }) {
   if (!showNav) return null
   return (
-    <div className="nav-dots">
+    <div className={`nav-dots ${navHidden ? 'nav-hidden' : ''}`}>
       {Array.from({ length: totalPages }, (_, i) => (
         <motion.div
           key={i}
@@ -163,6 +165,48 @@ function Sparkles({ count = 20 }) {
   )
 }
 
+function OpeningPage() {
+  return (
+    <motion.div
+      className="page-container"
+      style={{
+        height: '100vh',
+        width: '100%',
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0,
+        backgroundColor: '#000'
+      }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.1 }}
+      transition={{ duration: 0.9, ease: 'easeOut' }}
+    >
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/opening.gif`}
+        alt="Opening"
+        loading="eager"
+        decoding="async"
+        draggable={false}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          display: 'block',
+          imageRendering: 'auto'
+        }}
+      />
+    </motion.div>
+  )
+}
+
 function CoverPage({ guestName, onOpen }) {
   return (
     <motion.div
@@ -190,6 +234,7 @@ function CoverPage({ guestName, onOpen }) {
         }}
       />
       <Sparkles count={30} />
+
       <motion.div
         style={{
           position: 'relative',
@@ -229,21 +274,35 @@ function CoverPage({ guestName, onOpen }) {
             The Wedding Of
           </motion.div>
 
-          <motion.h1
-            className="font-anthela"
+          <motion.div
             style={{
-              fontSize: 'clamp(40px, 10vw, 72px)',
-              lineHeight: 1.05,
+              background: 'rgba(255, 255, 255, 0.92)',
+              borderRadius: '50px',
+              padding: '14px 40px',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+              border: '2px solid rgba(255, 255, 255, 0.85)',
               marginBottom: '14px',
-              color: '#8B1E2D',
-              textShadow: '0 4px 20px rgba(0,0,0,0.5)'
+              backdropFilter: 'blur(8px)'
             }}
-            initial={{ scale: 0.5, rotate: -10 }}
-            animate={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0.5, rotate: -10, opacity: 0 }}
+            animate={{ scale: 1, rotate: 0, opacity: 1 }}
             transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
+            whileHover={{ scale: 1.04 }}
           >
-            Rizqi & Nurul
-          </motion.h1>
+            <h1
+              className="font-anthela"
+              style={{
+                fontSize: 'clamp(40px, 10vw, 72px)',
+                lineHeight: 1.05,
+                margin: 0,
+                color: '#5C5C5C',
+                textShadow: 'none',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Rizqi &amp; Nurul
+            </h1>
+          </motion.div>
 
           <div className="decorative-line" style={{ background: 'linear-gradient(90deg, transparent, #D8C3A5, transparent)' }} />
 
@@ -254,7 +313,7 @@ function CoverPage({ guestName, onOpen }) {
             animate={{ opacity: 0.8 }}
             transition={{ delay: 1.2 }}
           >
-            Dear :
+            Kepada Bpk/Ibu/Saudara/i
           </motion.p>
 
           <motion.p
@@ -275,7 +334,11 @@ function CoverPage({ guestName, onOpen }) {
           <motion.button
             className="btn-primary"
             onClick={onOpen}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.28)',
+              borderColor: '#C0C0C0'
+            }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -283,7 +346,14 @@ function CoverPage({ guestName, onOpen }) {
               opacity: { delay: 1.6 },
               y: { delay: 1.6, repeat: Infinity, duration: 2 }
             }}
-            style={{ position: 'relative', zIndex: 10 }}
+            style={{
+              position: 'relative',
+              zIndex: 10,
+              background: 'rgba(255, 255, 255, 0.95)',
+              color: '#5C5C5C',
+              border: '2px solid #E8E8E8',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
+            }}
           >
             Buka Undangan
           </motion.button>
@@ -314,16 +384,40 @@ function CountdownPage({ countdown }) {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={15} />
 
       <motion.div
@@ -340,10 +434,10 @@ function CountdownPage({ countdown }) {
         </h2>
         <div className="decorative-line" />
         <p className="font-playfair" style={{ fontSize: 'clamp(18px, 4.5vw, 22px)', color: '#252525', marginBottom: '8px', marginTop: '8px' }}>
-          15 Juni 2025
+          06 April 2026
         </p>
         <p className="font-poppins" style={{ fontSize: '14px', color: '#6B6B6B', marginBottom: '48px' }}>
-          Minggu • 10.00 WIB
+          Senin • 10.00 WIB
         </p>
       </motion.div>
 
@@ -351,7 +445,7 @@ function CountdownPage({ countdown }) {
         {items.map((item, i) => (
           <motion.div
             key={item.label}
-            className="countdown-box card-3d"
+            className="countdown-box card-3d scroll-animate"
             style={{ textAlign: 'center' }}
             initial={{ opacity: 0, rotateX: -90, z: -100 }}
             animate={{ opacity: 1, rotateX: 0, z: 0 }}
@@ -359,7 +453,8 @@ function CountdownPage({ countdown }) {
             whileHover={{ scale: 1.05, rotateY: 5 }}
           >
             <motion.p
-              className="font-playfair gradient-gold"
+              className={`font-playfair gradient-gold event-day-counter`}
+              data-target={item.value}
               style={{ fontSize: 'clamp(28px, 7vw, 42px)', fontWeight: 700, lineHeight: 1 }}
               key={item.value}
               initial={{ scale: 1.3 }}
@@ -404,16 +499,40 @@ function DoaPage() {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={12} />
 
       <motion.div
@@ -517,16 +636,40 @@ function MempelaiPage() {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={15} />
 
       <motion.div
@@ -559,7 +702,7 @@ function MempelaiPage() {
               position: 'relative',
               overflow: 'hidden'
             }}
-            className="card-3d"
+            className="card-3d scroll-animate"
             initial={{ opacity: 0, x: i === 0 ? -100 : 100, rotateY: i === 0 ? -30 : 30 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ delay: 0.4 + i * 0.2, type: 'spring', stiffness: 80 }}
@@ -612,7 +755,7 @@ function MempelaiPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1, type: 'spring' }}
         >
-          <div className="font-great-vibes" style={{ fontSize: '48px', color: '#8B1E2D' }}>&</div>
+          <div className="font-great-vibes" style={{ fontSize: '48px', color: '#8B1E2D' }}>&amp;</div>
         </motion.div>
       </div>
     </motion.div>
@@ -662,16 +805,40 @@ function AcaraPage() {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={12} />
 
       <motion.div
@@ -701,7 +868,7 @@ function AcaraPage() {
               border: '1px solid #D8C3A5',
               transformStyle: 'preserve-3d'
             }}
-            className="card-3d"
+            className="card-3d scroll-animate"
             initial={{ opacity: 0, y: 50, rotateX: -30 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ delay: 0.4 + i * 0.2, type: 'spring', stiffness: 80 }}
@@ -759,7 +926,7 @@ function AcaraPage() {
         transition={{ delay: 0.8, type: 'spring' }}
       >
         <iframe
-          src="https://www.google.com/maps/embed?pb=..."
+          src="https://www.google.com/maps/embed?pb=!"
           width="100%"
           height="200"
           style={{ border: 0, display: 'block' }}
@@ -831,16 +998,40 @@ function GiftPage({ onCopy }) {
         justifyContent: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(248,247,245,0.88) 0%, rgba(241,233,223,0.9) 50%, rgba(232,220,203,0.88) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={15} />
 
       <motion.div
@@ -878,7 +1069,7 @@ function GiftPage({ onCopy }) {
         {banks.map((bank, i) => (
           <motion.div
             key={bank.name}
-            className="bank-card"
+            className="bank-card scroll-animate"
             initial={{ opacity: 0, x: i === 0 ? -100 : 100, rotateZ: i === 0 ? -5 : 5 }}
             animate={{ opacity: 1, x: 0, rotateZ: 0 }}
             transition={{ delay: 0.5 + i * 0.2, type: 'spring', stiffness: 100 }}
@@ -983,6 +1174,8 @@ function GalleryPage() {
   `${import.meta.env.BASE_URL}Assets/Image/gallery2.jpeg`,
   `${import.meta.env.BASE_URL}Assets/Image/gallery3.jpeg`
 ]
+  const [zoomed, setZoomed] = useState({})
+  const toggleZoom = (i) => setZoomed(prev => ({ ...prev, [i]: !prev[i] }))
 
   return (
     <motion.div
@@ -994,16 +1187,40 @@ function GalleryPage() {
         alignItems: 'center',
         padding: '60px 24px',
         position: 'relative',
-        backgroundImage: `url('${import.meta.env.BASE_URL}Assets/Image/backgound.jfif')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundColor: '#F5F0E8'
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(241,233,223,0.9) 0%, rgba(244,217,196,0.92) 50%, rgba(237,213,187,0.9) 100%)', zIndex: 0 }} />
+      <img
+        src={`${import.meta.env.BASE_URL}Assets/Video/background.gif`}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        decoding="async"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(250,245,238,0.65) 0%, rgba(248,244,235,0.72) 45%, rgba(248,244,235,0.72) 55%, rgba(250,245,238,0.70) 100%)',
+          zIndex: 1
+        }}
+      />
       <Sparkles count={12} />
 
       <motion.div
@@ -1041,9 +1258,11 @@ function GalleryPage() {
       >
         {images.map((img, i) => {
           const isLarge = i === 0
+          const isZoomed = !!zoomed[i]
           return (
             <motion.div
               key={i}
+              onClick={() => toggleZoom(i)}
               style={{
                 gridColumn: isLarge ? 'span 2' : 'span 1',
                 borderRadius: '16px',
@@ -1054,15 +1273,20 @@ function GalleryPage() {
                 position: 'relative',
                 cursor: 'pointer'
               }}
-              className="gallery-image"
+              className="gallery-image gallery-img scroll-animate"
               initial={{ opacity: 0, scale: 0.5, rotate: i % 2 === 0 ? -10 : 10 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              animate={{
+                opacity: 1,
+                rotate: 0,
+                scale: isZoomed ? 1.1 : 1
+              }}
               transition={{
                 delay: 0.4 + i * 0.15,
                 type: 'spring',
-                stiffness: 80
+                stiffness: 80,
+                scale: { type: 'spring', stiffness: 300, damping: 22, delay: 0 }
               }}
-              whileHover={{ scale: 1.03, rotateY: 3, rotateX: -3 }}
+              whileHover={!isZoomed ? { scale: 1.03, rotateY: 3, rotateX: -3 } : {}}
             >
               <img
                 src={img}
@@ -1071,17 +1295,11 @@ function GalleryPage() {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
+                  objectPosition: isLarge ? '50% calc(50% + 80px)' : 'center',
                   display: 'block'
                 }}
                 loading="lazy"
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.2) 100%)',
-                  pointerEvents: 'none'
-                }}
+                decoding="async"
               />
             </motion.div>
           )
@@ -1215,7 +1433,7 @@ function PenutupPage() {
           KAMI YANG BERBAHAGIA
         </p>
         <h3 className="font-anthela gradient-gold" style={{ fontSize: 'clamp(36px, 9vw, 52px)', marginBottom: '4px', fontWeight: 400 }}>
-          Rizqi & Nurul
+          Rizqi &amp; Nurul
         </h3>
         <p className="font-playfair" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', fontStyle: 'italic' }}>
           beserta segenap keluarga besar
@@ -1269,6 +1487,17 @@ export default function App() {
   const [showCopyToast, setShowCopyToast] = useState(false)
   const [isMusicPlaying, setIsMusicPlaying] = useState(false)
   const [musicEnabled, setMusicEnabled] = useState(false)
+  const [musicHiddenOnScroll, setMusicHiddenOnScroll] = useState(false)
+  const [navHidden, setNavHidden] = useState(false)
+  const [activeSection, setActiveSection] = useState(0)
+
+  const scrollLockRef = useRef(false)
+  const scrollTimeoutRef = useRef(null)
+  const scrollHideNavRef = useRef(null)
+  const musicScrollTimeoutRef = useRef(null)
+  const counterObserverRef = useRef(null)
+  const scrollAnimObserverRef = useRef(null)
+
   const guestName = useGuestName()
   const countdown = useCountdown(WEDDING_DATE)
 
@@ -1276,125 +1505,282 @@ export default function App() {
 
   const handleOpenInvitation = () => {
     setIsCoverOpen(true)
-    setMusicEnabled(true)
-    setIsMusicPlaying(true)
+    const savedStatus = localStorage.getItem('musicStatus')
+    if (savedStatus !== 'paused') {
+      setMusicEnabled(true)
+      setIsMusicPlaying(true)
+      localStorage.setItem('musicStatus', 'playing')
+    } else {
+      setMusicEnabled(true)
+      setIsMusicPlaying(false)
+    }
     setTimeout(() => {
-      setCurrentPage(1)
-    }, 1200)
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }, 50)
   }
 
-  const navigateTo = (page) => {
-    if (page >= 0 && page < totalPages) {
-      if (page === 0) {
-        setCurrentPage(0)
-        setIsCoverOpen(false)
-        setIsMusicPlaying(false)
-        setMusicEnabled(false)
-      } else {
-        if (!isCoverOpen) setIsCoverOpen(true)
-        setCurrentPage(page)
-      }
+  const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+  const sectionIds = ['section-opening', 'section-countdown', 'section-doa', 'section-mempelai', 'section-acara', 'section-gift', 'section-gallery', 'section-penutup']
+
+  const smoothScrollTo = (sectionIndex) => {
+    const id = sectionIds[sectionIndex]
+    if (!id) return
+    const el = document.getElementById(id)
+    if (!el) return
+    const startPosition = window.pageYOffset || 0
+    const targetPosition = el.getBoundingClientRect().top + startPosition - 8
+    const distance = targetPosition - startPosition
+    const duration = 800
+    let start = null
+    const step = (currentTime) => {
+      if (start === null) start = currentTime
+      const timeElapsed = currentTime - start
+      const progress = Math.min(timeElapsed / duration, 1)
+      const ease = easeInOutCubic(progress)
+      window.scrollTo(0, startPosition + distance * ease)
+      if (timeElapsed < duration) requestAnimationFrame(step)
     }
+    requestAnimationFrame(step)
   }
 
   useEffect(() => {
     const handleWheel = (e) => {
-      if (!isCoverOpen) return
-      if (e.deltaY > 30 && currentPage < totalPages - 1) {
-        navigateTo(currentPage + 1)
-      } else if (e.deltaY < -30 && currentPage > 0) {
-        navigateTo(currentPage - 1)
-      }
     }
-
-    let touchStartY = 0
     const handleTouchStart = (e) => {
-      touchStartY = e.touches[0].clientY
+    }
+    const handleTouchMove = (e) => {
     }
     const handleTouchEnd = (e) => {
-      if (!isCoverOpen) return
-      const touchEndY = e.changedTouches[0].clientY
-      const diff = touchStartY - touchEndY
-      if (Math.abs(diff) > 60) {
-        if (diff > 0 && currentPage < totalPages - 1) {
-          navigateTo(currentPage + 1)
-        } else if (diff < 0 && currentPage > 0) {
-          navigateTo(currentPage - 1)
-        }
-      }
     }
-
     window.addEventListener('wheel', handleWheel, { passive: true })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: true })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
-
     return () => {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [currentPage, isCoverOpen])
+  }, [isCoverOpen])
 
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') {
+      if (document.hidden) {
         setIsMusicPlaying(false)
+      } else if (isCoverOpen) {
+        const savedStatus = localStorage.getItem('musicStatus')
+        if (savedStatus !== 'paused') {
+          setIsMusicPlaying(true)
+          if (!musicEnabled) setMusicEnabled(true)
+        }
       }
     }
     document.addEventListener('visibilitychange', handleVisibilityChange)
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [isCoverOpen, musicEnabled])
+
+  useEffect(() => {
+    if (isCoverOpen) {
+      document.body.style.overflowY = 'auto'
+      document.body.style.overflowX = 'hidden'
+      document.documentElement.style.overflowY = 'auto'
+      document.documentElement.style.overflowX = 'hidden'
+    } else {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    }
+    document.body.style.msOverflowStyle = 'none'
+    document.body.style.scrollbarWidth = 'none'
+    return () => {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+      document.body.style.msOverflowStyle = ''
+      document.body.style.scrollbarWidth = ''
+    }
+  }, [isCoverOpen])
+
+  useEffect(() => {
+    const INTERACTIVE_SELECTOR = 'button, a, input, select, textarea, label, [role="button"], .nav-dot, .music-player, .btn-primary, .btn-gift, .gallery-image, .bank-card, .gallery-img'
+    const isInteractive = (el) => {
+      if (!el) return false
+      if (el.matches && el.matches(INTERACTIVE_SELECTOR)) return true
+      return el.closest && el.closest(INTERACTIVE_SELECTOR)
+    }
+    const handleClickCapture = (e) => {
+      if (!isInteractive(e.target)) {
+        e.stopPropagation()
+      }
+    }
+    document.addEventListener('click', handleClickCapture, true)
+    return () => document.removeEventListener('click', handleClickCapture, true)
   }, [])
 
   useEffect(() => {
-    if (!isCoverOpen || currentPage === 0) {
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-      document.documentElement.style.overflow = 'auto'
+    if (!isCoverOpen) return
+    let lastScrollTop = window.pageYOffset || 0
+
+    const handleWindowScroll = () => {
+      const currentScrollTop = window.pageYOffset || 0
+
+      setMusicHiddenOnScroll(true)
+      clearTimeout(musicScrollTimeoutRef.current)
+      musicScrollTimeoutRef.current = setTimeout(() => { setMusicHiddenOnScroll(false) }, 1000)
+
+      setNavHidden(true)
+      window.clearTimeout(scrollHideNavRef.current)
+      scrollHideNavRef.current = setTimeout(() => setNavHidden(false), 150)
+
+      let current = 0
+      for (let i = 0; i < sectionIds.length; i++) {
+        const el = document.getElementById(sectionIds[i])
+        if (!el) continue
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= window.innerHeight * 0.5) current = i
+      }
+      if (current !== activeSection) setActiveSection(current)
+
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop
     }
+
+    window.addEventListener('scroll', handleWindowScroll, { passive: true })
+
+    requestAnimationFrame(() => handleWindowScroll())
+
     return () => {
-      document.body.style.overflow = 'auto'
-      document.documentElement.style.overflow = 'auto'
+      window.removeEventListener('scroll', handleWindowScroll)
+      clearTimeout(scrollTimeoutRef.current)
+      clearTimeout(musicScrollTimeoutRef.current)
+      clearTimeout(scrollHideNavRef.current)
     }
-  }, [isCoverOpen, currentPage])
+  }, [isCoverOpen])
+
+  useEffect(() => {
+    if (!isCoverOpen) return
+    const scrollEls = document.querySelectorAll('.scroll-animate')
+    let lastScrollTop = window.pageYOffset || 0
+
+    scrollEls.forEach(el => {
+      if (!el.classList.contains('fade-up') && !el.classList.contains('fade-down')) {
+        el.classList.add('fade-up')
+      }
+    })
+
+    const observer = new IntersectionObserver((entries) => {
+      const currentScrollTop = window.pageYOffset || 0
+      const scrollingDown = currentScrollTop >= lastScrollTop
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (scrollingDown) {
+            entry.target.classList.remove('fade-down')
+            entry.target.classList.add('fade-up')
+          } else {
+            entry.target.classList.remove('fade-up')
+            entry.target.classList.add('fade-down')
+          }
+          void entry.target.offsetWidth
+          entry.target.classList.add('visible')
+        } else {
+          entry.target.classList.remove('visible')
+        }
+      })
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' })
+
+    scrollEls.forEach(el => observer.observe(el))
+    scrollAnimObserverRef.current = observer
+
+    requestAnimationFrame(() => {
+      scrollEls.forEach(el => {
+        const rect = el.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('visible')
+        }
+      })
+    })
+
+    return () => observer.disconnect()
+  }, [isCoverOpen])
+
+  useEffect(() => {
+    if (!isCoverOpen) return
+    const counterEls = document.querySelectorAll('.event-day-counter')
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target
+          const raw = counter.getAttribute('data-target')
+          const target = parseInt(raw || '0', 10) || 0
+          if (isNaN(target) || target === 0) {
+            counter.textContent = String(raw ?? '00').padStart ? String(raw ?? '00').padStart(2, '0') : raw ?? '00'
+            return
+          }
+          let current = 0
+          const duration = 1500
+          const stepTime = 20
+          const steps = Math.max(1, Math.floor(duration / stepTime))
+          const increment = target / steps
+          let frame = 0
+          const tick = () => {
+            frame++
+            current += increment
+            if (current >= target || frame > steps + 2) {
+              counter.textContent = String(target).padStart(2, '0')
+              return
+            }
+            counter.textContent = String(Math.ceil(current)).padStart(2, '0')
+            setTimeout(tick, stepTime)
+          }
+          tick()
+          obs.unobserve(counter)
+        }
+      })
+    }, { threshold: 0.5 })
+    counterEls.forEach(el => obs.observe(el))
+    counterObserverRef.current = obs
+    return () => obs.disconnect()
+  }, [isCoverOpen, countdown.days, countdown.hours, countdown.minutes, countdown.seconds])
+
+  const toggleMusic = () => {
+    setIsMusicPlaying(prev => {
+      const next = !prev
+      localStorage.setItem('musicStatus', next ? 'playing' : 'paused')
+      return next
+    })
+  }
 
   const handleCopy = () => {
     setShowCopyToast(true)
   }
 
-  const toggleMusic = () => {
-    if (!musicEnabled) setMusicEnabled(true)
-    setIsMusicPlaying(p => !p)
-  }
-
   return (
-    <div style={{ width: '100%', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
       {musicEnabled && (
-        <MusicPlayer isPlaying={isMusicPlaying} toggle={toggleMusic} />
+        <MusicPlayer
+          isPlaying={isMusicPlaying}
+          toggle={toggleMusic}
+          hiddenOnScroll={musicHiddenOnScroll}
+          scrolling={musicHiddenOnScroll}
+        />
       )}
 
       <NavigationDots
-        currentPage={currentPage}
+        currentPage={activeSection}
         totalPages={totalPages}
-        onNavigate={navigateTo}
-        showNav={isCoverOpen && currentPage !== 0}
+        onNavigate={(i) => smoothScrollTo(i)}
+        showNav={isCoverOpen}
+        navHidden={navHidden}
       />
 
-      <div style={{ position: 'relative', width: '100%', minHeight: '100vh' }}>
+      <div style={{ position: 'relative', width: '100%' }}>
         <AnimatePresence mode="wait">
-          {currentPage === 0 && (
+          {!isCoverOpen && (
             <motion.div
               key="cover"
-              initial={isCoverOpen ? { y: 0, rotateX: 0, opacity: 1 } : { y: 0, rotateX: 0, opacity: 1 }}
-              animate={isCoverOpen
-                ? { y: '-100vh', rotateX: -15, opacity: 0.5 }
-                : { y: 0, rotateX: 0, opacity: 1 }
-              }
-              transition={isCoverOpen
-                ? { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
-                : { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
-              }
+              initial={{ y: 0, rotateX: 0, opacity: 1 }}
+              exit={{ y: '-100vh', rotateX: -15, opacity: 0.5 }}
+              transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
               style={{
                 position: 'fixed',
                 top: 0,
@@ -1402,6 +1788,8 @@ export default function App() {
                 right: 0,
                 bottom: 0,
                 zIndex: 50,
+                width: '100%',
+                height: '100vh',
                 transformOrigin: 'top center',
                 transformStyle: 'preserve-3d'
               }}
@@ -1412,99 +1800,45 @@ export default function App() {
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
-          {currentPage === 1 && (
+          {isCoverOpen && (
             <motion.div
-              key="countdown"
-              initial={{ opacity: 0, scale: 0.9, y: 100 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -100 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <CountdownPage countdown={countdown} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 2 && (
-            <motion.div
-              key="doa"
-              initial={{ opacity: 0, rotateY: 90, x: 200 }}
-              animate={{ opacity: 1, rotateY: 0, x: 0 }}
-              exit={{ opacity: 0, rotateY: -90, x: -200 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <DoaPage />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 3 && (
-            <motion.div
-              key="mempelai"
-              initial={{ opacity: 0, rotateX: 45, y: 200 }}
-              animate={{ opacity: 1, rotateX: 0, y: 0 }}
-              exit={{ opacity: 0, rotateX: -45, y: -200 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <MempelaiPage />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 4 && (
-            <motion.div
-              key="acara"
-              initial={{ opacity: 0, scale: 1.2 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <AcaraPage />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 5 && (
-            <motion.div
-              key="gift"
-              initial={{ opacity: 0, x: -300, skewX: 10 }}
-              animate={{ opacity: 1, x: 0, skewX: 0 }}
-              exit={{ opacity: 0, x: 300, skewX: -10 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <GiftPage onCopy={handleCopy} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 6 && (
-            <motion.div
-              key="gallery"
-              initial={{ opacity: 0, rotate: -5, scale: 0.8 }}
-              animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              exit={{ opacity: 0, rotate: 5, scale: 0.8 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-            >
-              <GalleryPage />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          {currentPage === 7 && (
-            <motion.div
-              key="penutup"
-              initial={{ opacity: 0, y: 200, filter: 'blur(20px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -200, filter: 'blur(20px)' }}
+              key="main-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
+              style={{ width: '100%', position: 'relative' }}
             >
-              <PenutupPage />
+              <section id="section-opening" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <OpeningPage />
+              </section>
+
+              <section id="section-countdown" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <CountdownPage countdown={countdown} />
+              </section>
+
+              <section id="section-doa" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <DoaPage />
+              </section>
+
+              <section id="section-mempelai" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <MempelaiPage />
+              </section>
+
+              <section id="section-acara" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <AcaraPage />
+              </section>
+
+              <section id="section-gift" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <GiftPage onCopy={handleCopy} />
+              </section>
+
+              <section id="section-gallery" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <GalleryPage />
+              </section>
+
+              <section id="section-penutup" className="scroll-section" style={{ minHeight: '100vh', width: '100%', position: 'relative' }}>
+                <PenutupPage />
+              </section>
             </motion.div>
           )}
         </AnimatePresence>

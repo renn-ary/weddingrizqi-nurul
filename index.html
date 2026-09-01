@@ -1,340 +1,574 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan Rizqi &amp; Nurul | 19 September 2026</title>
-  <meta name="description" content="Undangan Pernikahan Rizqi Ramadhani & Nurul Hidayatul Mahfiroh — Sabtu, 19 September 2026 di Masjid Agung Jawa Tengah, Semarang." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Franklin:wght@300;400&display=swap" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Pernikahan Rizqi &amp; Nurul | 19 September 2026</title>
+    <meta
+      name="description"
+      content="Undangan Pernikahan Rizqi Ramadhani & Nurul Hidayatul Mahfiroh — Sabtu, 19 September 2026 di Masjid Agung Jawa Tengah, Semarang."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Franklin:wght@300;400&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio
+      id="audio"
+      loop
+      src="Assets/Audio/wedding.mp3"
+      preload="none"
+    ></audio>
 
-<audio id="audio" loop src="Assets/Audio/wedding.mp3" preload="none"></audio>
-
-<div id="toast" class="toast-success sty-1" >
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-  Berhasil disalin!
-</div>
-
-<!-- COVER PAGE -->
-<div id="cover-page" class="cover-page">
-  <div class="cover-bg sty-2" ></div>
-  <div class="cover-overlay"></div>
-  <div id="cover-sparkles" class="sparkles-host"></div>
-  <div class="cover-content">
-    <div class="sty-3"  aria-hidden="true"></div>
-    <div class="cover-bottom" id="cover-bottom">
-      <div class="wedding-of-text font-libre-franklin">The Wedding Of</div>
-      <div class="names-box">
-        <h1 class="font-anthela names-title">Rizqi &amp; Nurul</h1>
-      </div>
-      <p class="font-libre-franklin sty-4" >Kepada Bpk/Ibu/Saudara/i</p>
-      <p id="guest-name" class="font-playfair sty-5" >Nama Tamu</p>
-      <button id="btn-open" class="btn-primary sty-6"  onclick="openInvitation()">Buka Undangan</button>
-    </div>
-    <div class="sty-7"  aria-hidden="true"></div>
-  </div>
-</div>
-
-<!-- Music Player -->
-<div id="music-player" class="music-player sty-8"  onclick="toggleMusic()">
-  <svg id="music-icon-play" width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M8 5v14l11-7z"/></svg>
-  <svg class="sty-9" id="music-icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="#ff0000" ><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-</div>
-
-<!-- Nav Dots -->
-<div id="nav-dots" class="nav-dots sty-10" ></div>
-
-<!-- MAIN CONTENT -->
-<div class="sty-11" id="main-content" >
-
-<!-- Section 0: Opening -->
-<section id="section-opening" class="scroll-section sty-12" >
-  <div class="page-container sty-13" >
-    <img class="sty-14" src="Assets/Video/opening.gif" alt="Opening" loading="lazy" decoding="async" draggable="false"
-      />
-  </div>
-</section>
-
-<!-- Section 1: Countdown -->
-<section id="section-countdown" class="scroll-section sty-15" >
-  <div class="page-container sty-16" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="15"></div>
-
-    <div class="scroll-animate fade-up sty-17" >
-      <h2 class="font-anthela sty-18" >Menuju Bahagia</h2>
-      <div class="decorative-line sty-19" ></div>
-      <p class="font-playfair sty-20" >19 September 2026</p>
-      <p class="font-poppins sty-21" >Sabtu &bull; 08.00 WIB</p>
+    <div id="toast" class="toast-success sty-1">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <path d="M20 6L9 17l-5-5" />
+      </svg>
+      Berhasil disalin!
     </div>
 
-    <div class="sty-22" id="countdown-grid" >
-      <div class="countdown-box card-3d sty-23" >
-        <p class="font-playfair sty-24" id="cd-days" >00</p>
-        <p class="font-poppins sty-25" >Hari</p>
-      </div>
-      <div class="countdown-box card-3d sty-26" >
-        <p class="font-playfair sty-27" id="cd-hours" >00</p>
-        <p class="font-poppins sty-28" >Jam</p>
-      </div>
-      <div class="countdown-box card-3d sty-29" >
-        <p class="font-playfair sty-30" id="cd-minutes" >00</p>
-        <p class="font-poppins sty-31" >Menit</p>
-      </div>
-      <div class="countdown-box card-3d sty-32" >
-        <p class="font-playfair sty-33" id="cd-seconds" >00</p>
-        <p class="font-poppins sty-34" >Detik</p>
-      </div>
-    </div>
-    <div class="sty-35" id="countdown-finished" >
-      <p class="font-playfair sty-36" >Acara telah selesai</p>
-    </div>
-
-    <div class="scroll-animate fade-up sty-37" >
-      <p class="font-poppins sty-38" >Save The Date</p>
-      <p class="font-poppins sty-39" >"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya..."</p>
-      <p class="font-playfair sty-40" >— Ar-Rum: 21</p>
-    </div>
-  </div>
-</section>
-
-<!-- Section 2: Doa -->
-<section id="section-doa" class="scroll-section sty-41" >
-  <div class="page-container sty-42" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="12"></div>
-
-    <div class="scroll-animate fade-up sty-43" >
-      <div class="ornament floating-animation sty-44" >🌸</div>
-      <h2 class="font-anthela sty-45" >Berkah Suci</h2>
-      <div class="decorative-line sty-46" ></div>
-    </div>
-
-    <div class="scroll-animate fade-up card-3d sty-47" >
-      <div class="sty-48" >
-        <p class="font-playfair sty-49" >بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
-      </div>
-      <p class="font-poppins sty-50" >"Semoga Allah memberkahimu dan memberkahi atasmu, serta semoga Allah mengumpulkan kalian berdua dalam kebaikan."</p>
-      <p class="font-playfair sty-51" >— HR. Abu Dawud, Tirmidzi</p>
-      <div class="sty-52" >
-        <p class="font-poppins sty-53" >Dengan segala kerendahan hati, kami mohon do'a restu Bapak/Ibu/Saudara/i, agar pernikahan kami senantiasa dilimpahi keberkahan, kebahagiaan, dan ketenangan dunia serta akhirat. Aamiin Ya Rabbal 'Alamin.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section 3: Mempelai -->
-<section id="section-mempelai" class="scroll-section sty-54" >
-  <div class="page-container sty-55" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="15"></div>
-
-    <div class="scroll-animate fade-up sty-56" >
-      <h2 class="font-anthela sty-57" >Kedua Mempelai</h2>
-      <div class="decorative-line sty-58" ></div>
-    </div>
-
-    <div class="sty-59" >
-      <!-- Putra -->
-      <div class="scroll-animate fade-up card-3d sty-60" >
-        <div class="sty-61" ></div>
-        <div class="avatar-circle avatar-animate">
-          <img class="sty-62" src="Assets/Image/soloputra.jpeg" alt="Rizqi Ramadhani"  loading="lazy" decoding="async"/>
+    <!-- COVER PAGE -->
+    <div id="cover-page" class="cover-page">
+      <div class="cover-bg sty-2"></div>
+      <div class="cover-overlay"></div>
+      <div id="cover-sparkles" class="sparkles-host"></div>
+      <div class="cover-content">
+        <div class="sty-3" aria-hidden="true"></div>
+        <div class="cover-bottom" id="cover-bottom">
+          <div class="wedding-of-text font-libre-franklin">The Wedding Of</div>
+          <div class="names-box">
+            <h1 class="font-anthela names-title">Rizqi &amp; Nurul</h1>
+          </div>
+          <p class="font-libre-franklin sty-4">Kepada Bpk/Ibu/Saudara/i</p>
+          <p id="guest-name" class="font-playfair sty-5">Nama Tamu</p>
+          <button
+            id="btn-open"
+            class="btn-primary sty-6"
+            onclick="openInvitation()"
+          >
+            Buka Undangan
+          </button>
         </div>
-        <p class="font-poppins sty-63" >Mempelai Pria</p>
-        <h3 class="font-anthela sty-64" >Rizqi Ramadhani</h3>
-        <div class="sty-65" ></div>
-        <p class="font-poppins sty-66" >Putra dari Bapak Eko Priyono &amp; Ibu Nur Anita</p>
-        <p class="font-poppins sty-67" >Ds Sugihwaras Kec Ngoro Kab Jombang</p>
+        <div class="sty-7" aria-hidden="true"></div>
       </div>
-      <!-- Putri -->
-      <div class="scroll-animate fade-up card-3d sty-68" >
-        <div class="sty-69" ></div>
-        <div class="avatar-circle avatar-animate sty-70" >
-          <img class="sty-71" src="Assets/Image/soloputri.jpeg" alt="Nurul Hidayatul Mahfiroh"  loading="lazy" decoding="async"/>
+    </div>
+
+    <!-- Music Player -->
+    <div id="music-player" class="music-player sty-8" onclick="toggleMusic()">
+      <svg
+        id="music-icon-play"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="#9e2a2b"
+      >
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <svg
+        class="sty-9"
+        id="music-icon-pause"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="#9e2a2b"
+      >
+        <path
+          d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+        />
+      </svg>
+    </div>
+
+    <!-- Nav Dots -->
+    <div id="nav-dots" class="nav-dots sty-10"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="sty-11" id="main-content">
+      <!-- Section 0: Opening -->
+      <section id="section-opening" class="scroll-section sty-12">
+        <div class="page-container sty-13">
+          <img
+            class="sty-14"
+            src="Assets/Video/opening.gif"
+            alt="Opening"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
         </div>
-        <p class="font-poppins sty-72" >Mempelai Wanita</p>
-        <h3 class="font-anthela sty-73" >Nurul Hidayatul Mahfiroh, S.E</h3>
-        <div class="sty-74" ></div>
-        <p class="font-poppins sty-75" >Putri dari Bapak Petung Karyono &amp; Ibu Istiadah</p>
-        <p class="font-poppins sty-76" >Dsn Cermenan Ds Sugihwaras Kec Ngoro Kab Jombang</p>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- Section 4: Acara -->
-<section id="section-acara" class="scroll-section sty-77" >
-  <div class="page-container sty-78" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="12"></div>
+      <!-- Section 1: Countdown -->
+      <section id="section-countdown" class="scroll-section sty-15">
+        <div class="page-container sty-16">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="15"></div>
 
-    <div class="scroll-animate fade-up sty-79" >
-      <h2 class="font-anthela sty-80" >Waktu &amp; Tempat</h2>
-      <div class="decorative-line sty-81" ></div>
-    </div>
+          <div class="scroll-animate fade-up sty-17">
+            <h2 class="font-anthela sty-18">Menuju Bahagia</h2>
+            <div class="decorative-line sty-19"></div>
+            <p class="font-playfair sty-20">19 September 2026</p>
+            <p class="font-poppins sty-21">Sabtu &bull; 08.00 WIB</p>
+          </div>
 
-    <div class="sty-82" >
-      <div class="scroll-animate fade-up card-3d sty-83" >
-        <div class="sty-84" >
-          <div class="pulse-animation sty-85" >🎉</div>
-          <div class="sty-86" >
-            <p class="font-poppins sty-87" >Sabtu - Minggu, 19 - 20 September 2026</p>
-            <p class="font-poppins sty-88" >⏰ Rilex</p>
+          <div class="sty-22" id="countdown-grid">
+            <div class="countdown-box card-3d sty-23">
+              <p class="font-playfair sty-24" id="cd-days">00</p>
+              <p class="font-poppins sty-25">Hari</p>
+            </div>
+            <div class="countdown-box card-3d sty-26">
+              <p class="font-playfair sty-27" id="cd-hours">00</p>
+              <p class="font-poppins sty-28">Jam</p>
+            </div>
+            <div class="countdown-box card-3d sty-29">
+              <p class="font-playfair sty-30" id="cd-minutes">00</p>
+              <p class="font-poppins sty-31">Menit</p>
+            </div>
+            <div class="countdown-box card-3d sty-32">
+              <p class="font-playfair sty-33" id="cd-seconds">00</p>
+              <p class="font-poppins sty-34">Detik</p>
+            </div>
+          </div>
+          <div class="sty-35" id="countdown-finished">
+            <p class="font-playfair sty-36">Acara telah selesai</p>
+          </div>
+
+          <div class="scroll-animate fade-up sty-37">
+            <p class="font-poppins sty-38">Save The Date</p>
+            <p class="font-poppins sty-39">
+              "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+              untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung
+              dan merasa tenteram kepadanya..."
+            </p>
+            <p class="font-playfair sty-40">— Ar-Rum: 21</p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div class="scroll-animate fade-up sty-89" >
-      <iframe class="sty-90" src="https://www.google.com/maps/embed?pb=!" width="100%" height="200"  allowfullscreen="" loading="lazy" title="Google Maps"></iframe>
-    </div>
+      <!-- Section 2: Doa -->
+      <section id="section-doa" class="scroll-section sty-41">
+        <div class="page-container sty-42">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="12"></div>
 
-    <div class="scroll-animate fade-up sty-91" >
-      <button class="btn-primary sty-92"  onclick="openMaps()">🗺️ Buka Maps</button>
-      <button class="btn-gift sty-93"  onclick="shareLocation()">📤 Bagikan</button>
-    </div>
-  </div>
-</section>
+          <div class="scroll-animate fade-up sty-43">
+            <div class="ornament floating-animation sty-44">🌸</div>
+            <h2 class="font-anthela sty-45">Berkah Suci</h2>
+            <div class="decorative-line sty-46"></div>
+          </div>
 
-<!-- Section 5: Gift -->
-<section id="section-gift" class="scroll-section sty-94" >
-  <div class="page-container sty-95" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="15"></div>
-
-    <div class="scroll-animate fade-up sty-96" >
-      <div class="floating-animation sty-97" >🎁</div>
-      <h2 class="font-anthela sty-98" >Kado Bahagia</h2>
-      <div class="decorative-line sty-99" ></div>
-      <p class="font-poppins sty-100" >Sebagai ungkapan tanda kasih sayang Anda kepada kedua mempelai, dapat diberikan melalui transfer ke rekening berikut:</p>
-    </div>
-
-    <div class="sty-101" >
-      <div class="scroll-animate fade-up bank-card sty-102" >
-        <div class="sty-103" >
-          <div class="sty-104" >🏦</div>
-          <div>
-            <h3 class="font-playfair sty-105" >Bank BNI</h3>
-            <p class="font-poppins sty-106" >a.n. <span class="font-anthela sty-107" >Rizqi Ramadhani</span></p>
+          <div class="scroll-animate fade-up card-3d sty-47">
+            <div class="sty-48">
+              <p class="font-playfair sty-49">
+                بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي
+                خَيْرٍ
+              </p>
+            </div>
+            <p class="font-poppins sty-50">
+              "Semoga Allah memberkahimu dan memberkahi atasmu, serta semoga
+              Allah mengumpulkan kalian berdua dalam kebaikan."
+            </p>
+            <p class="font-playfair sty-51">— HR. Abu Dawud, Tirmidzi</p>
+            <div class="sty-52">
+              <p class="font-poppins sty-53">
+                Dengan segala kerendahan hati, kami mohon do'a restu
+                Bapak/Ibu/Saudara/i, agar pernikahan kami senantiasa dilimpahi
+                keberkahan, kebahagiaan, dan ketenangan dunia serta akhirat.
+                Aamiin Ya Rabbal 'Alamin.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="sty-108" >
-          <p class="font-poppins sty-109" >Nomor Rekening</p>
-          <p class="font-playfair sty-110" >1890 2118 61</p>
-        </div>
-        <button class="btn-gift sty-111"  onclick="copyNumber('1890211861')">📋 Salin Nomor Rekening</button>
-      </div>
+      </section>
 
-      <div class="scroll-animate fade-up bank-card sty-112" >
-        <div class="sty-113" >
-          <div class="sty-114" >💳</div>
-          <div>
-            <h3 class="font-playfair sty-115" >Bank BCA</h3>
-            <p class="font-poppins sty-116" >a.n. <span class="font-anthela sty-117" >Nurul Hidayatul Mahfiroh, S.E</span></p>
+      <!-- Section 3: Mempelai -->
+      <section id="section-mempelai" class="scroll-section sty-54">
+        <div class="page-container sty-55">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="15"></div>
+
+          <div class="scroll-animate fade-up sty-56">
+            <h2 class="font-anthela sty-57">Kedua Mempelai</h2>
+            <div class="decorative-line sty-58"></div>
+          </div>
+
+          <div class="sty-59">
+            <!-- Putra -->
+            <div class="scroll-animate fade-up card-3d sty-60">
+              <div class="sty-61"></div>
+              <div class="avatar-circle avatar-animate">
+                <img
+                  class="sty-62"
+                  src="Assets/Image/soloputra.jpeg"
+                  alt="Rizqi Ramadhani"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="font-poppins sty-63">Mempelai Pria</p>
+              <h3 class="font-anthela sty-64">Rizqi Ramadhani</h3>
+              <div class="sty-65"></div>
+              <p class="font-poppins sty-66">
+                Putra dari Bapak Eko Priyono &amp; Ibu Nur Anita
+              </p>
+              <p class="font-poppins sty-67">
+                Ds Sugihwaras Kec Ngoro Kab Jombang
+              </p>
+            </div>
+            <!-- Putri -->
+            <div class="scroll-animate fade-up card-3d sty-68">
+              <div class="sty-69"></div>
+              <div class="avatar-circle avatar-animate sty-70">
+                <img
+                  class="sty-71"
+                  src="Assets/Image/soloputri.jpeg"
+                  alt="Nurul Hidayatul Mahfiroh"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="font-poppins sty-72">Mempelai Wanita</p>
+              <h3 class="font-anthela sty-73">Nurul Hidayatul Mahfiroh, S.E</h3>
+              <div class="sty-74"></div>
+              <p class="font-poppins sty-75">
+                Putri dari Bapak Petung Karyono &amp; Ibu Istiadah
+              </p>
+              <p class="font-poppins sty-76">
+                Dsn Cermenan Ds Sugihwaras Kec Ngoro Kab Jombang
+              </p>
+            </div>
           </div>
         </div>
-        <div class="sty-118" >
-          <p class="font-poppins sty-119" >Nomor Rekening</p>
-          <p class="font-playfair sty-120" >1132 0559 68</p>
+      </section>
+
+      <!-- Section 4: Acara -->
+      <section id="section-acara" class="scroll-section sty-77">
+        <div class="page-container sty-78">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="12"></div>
+
+          <div class="scroll-animate fade-up sty-79">
+            <h2 class="font-anthela sty-80">Waktu &amp; Tempat</h2>
+            <div class="decorative-line sty-81"></div>
+          </div>
+
+          <div class="sty-82">
+            <div class="scroll-animate fade-up card-3d sty-83">
+              <div class="sty-84">
+                <div class="pulse-animation sty-85">🎉</div>
+                <div class="sty-86">
+                  <p class="font-poppins sty-87">
+                    Sabtu - Minggu, 19 - 20 September 2026
+                  </p>
+                  <p class="font-poppins sty-88">⏰ Rilex</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-animate fade-up sty-89">
+            <iframe
+              class="sty-90"
+              src="https://www.google.com/maps/embed?pb=!"
+              width="100%"
+              height="200"
+              allowfullscreen=""
+              loading="lazy"
+              title="Google Maps"
+            ></iframe>
+          </div>
+
+          <div class="scroll-animate fade-up sty-91">
+            <button class="btn-primary sty-92" onclick="openMaps()">
+              🗺️ Buka Maps
+            </button>
+            <button class="btn-primary sty-93" onclick="shareLocation()">
+              📤 Bagikan
+            </button>
+          </div>
         </div>
-        <button class="btn-gift sty-121"  onclick="copyNumber('1132055968')">📋 Salin Nomor Rekening</button>
-      </div>
+      </section>
+
+      <!-- Section 5: Gift -->
+      <section id="section-gift" class="scroll-section sty-94">
+        <div class="page-container sty-95">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="15"></div>
+
+          <div class="scroll-animate fade-up sty-96">
+            <div class="floating-animation sty-97">🎁</div>
+            <h2 class="font-anthela sty-98">Kado Bahagia</h2>
+            <div class="decorative-line sty-99"></div>
+            <p class="font-poppins sty-100">
+              Sebagai ungkapan tanda kasih sayang Anda kepada kedua mempelai,
+              dapat diberikan melalui transfer ke rekening berikut:
+            </p>
+          </div>
+
+          <div class="sty-101">
+            <div class="scroll-animate fade-up bank-card sty-102">
+              <div class="sty-103">
+                <div class="sty-104">🏦</div>
+                <div>
+                  <h3 class="font-playfair sty-105">Bank BNI</h3>
+                  <p class="font-poppins sty-106">
+                    a.n.
+                    <span class="font-anthela sty-107">Rizqi Ramadhani</span>
+                  </p>
+                </div>
+              </div>
+              <div class="sty-108">
+                <p class="font-poppins sty-109">Nomor Rekening</p>
+                <p class="font-playfair sty-110">1890 2118 61</p>
+              </div>
+              <button
+                class="btn-gift sty-111"
+                onclick="copyNumber('1890211861')"
+              >
+                📋 Salin Nomor Rekening
+              </button>
+            </div>
+
+            <div class="scroll-animate fade-up bank-card sty-112">
+              <div class="sty-113">
+                <div class="sty-114">💳</div>
+                <div>
+                  <h3 class="font-playfair sty-115">Bank BCA</h3>
+                  <p class="font-poppins sty-116">
+                    a.n.
+                    <span class="font-anthela sty-117"
+                      >Nurul Hidayatul Mahfiroh, S.E</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="sty-118">
+                <p class="font-poppins sty-119">Nomor Rekening</p>
+                <p class="font-playfair sty-120">1132 0559 68</p>
+              </div>
+              <button
+                class="btn-gift sty-121"
+                onclick="copyNumber('1132055968')"
+              >
+                📋 Salin Nomor Rekening
+              </button>
+            </div>
+          </div>
+
+          <p class="font-poppins scroll-animate fade-up sty-122">
+            "Kehadiran serta do'a Anda adalah karunia terbesar bagi kami. Jika
+            berkenan memberikan kado, akan sangat meringankan beban kami dalam
+            membina rumah tangga. Terima kasih atas kasih sayangnya." 💛
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6: Gallery -->
+      <section id="section-gallery" class="scroll-section sty-123">
+        <div class="page-container sty-124">
+          <img
+            src="Assets/Video/background.gif"
+            loading="lazy"
+            decoding="async"
+            alt=""
+            aria-hidden="true"
+            class="page-bg-gif"
+          />
+          <div class="page-overlay" aria-hidden="true"></div>
+          <div class="sparkles-host" data-count="12"></div>
+
+          <div class="scroll-animate fade-up sty-125">
+            <div class="floating-animation sty-126">📸</div>
+            <h2 class="font-anthela sty-127">Kenangan Kami</h2>
+            <div class="decorative-line sty-128"></div>
+          </div>
+
+          <div class="sty-129">
+            <div
+              class="gallery-image gallery-img scroll-animate fade-up sty-130"
+              onclick="toggleZoom(this)"
+            >
+              <img
+                class="sty-131"
+                src="Assets/Image/covermempelai.jpeg"
+                alt="Gallery 1"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div
+              class="gallery-image gallery-img scroll-animate fade-up sty-132"
+              onclick="toggleZoom(this)"
+            >
+              <img
+                class="sty-133"
+                src="Assets/Image/gallery.jpeg"
+                alt="Gallery 2"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div
+              class="gallery-image gallery-img scroll-animate fade-up sty-134"
+              onclick="toggleZoom(this)"
+            >
+              <img
+                class="sty-135"
+                src="Assets/Image/gallery1.jpeg"
+                alt="Gallery 3"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div
+              class="gallery-image gallery-img scroll-animate fade-up sty-136"
+              onclick="toggleZoom(this)"
+            >
+              <img
+                class="sty-137"
+                src="Assets/Image/gallery2.jpeg"
+                alt="Gallery 4"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div
+              class="gallery-image gallery-img scroll-animate fade-up sty-138"
+              onclick="toggleZoom(this)"
+            >
+              <img
+                class="sty-139"
+                src="Assets/Image/gallery3.jpeg"
+                alt="Gallery 5"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <div class="scroll-animate fade-up sty-140">
+            <p class="font-poppins sty-141">
+              "Setiap foto adalah kenangan yang telah membekas, menjadi saksi
+              perjalanan cinta kami menuju hari bahagia."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Penutup -->
+      <section id="section-penutup" class="scroll-section sty-142">
+        <div class="page-container sty-143">
+          <div class="sparkles-host" data-count="40"></div>
+          <div class="sty-144" id="penutup-stars"></div>
+
+          <div class="scroll-animate fade-up sty-145">
+            <div class="star-rotate-wrap sty-146">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle
+                  cx="30"
+                  cy="30"
+                  r="28"
+                  stroke="#D8C3A5"
+                  stroke-width="1"
+                  stroke-dasharray="4 4"
+                />
+                <path
+                  d="M30 18 L34 28 L44 28 L36 35 L39 45 L30 39 L21 45 L24 35 L16 28 L26 28 Z"
+                  fill="#9e2a2b"
+                  opacity="0.95"
+                  stroke="#D8C3A5"
+                  stroke-width="0.5"
+                />
+              </svg>
+            </div>
+            <p class="font-poppins sty-147">Terima Kasih</p>
+            <h2 class="font-anthela sty-148">Atas Kehadiran</h2>
+            <div class="decorative-line sty-149"></div>
+          </div>
+
+          <div class="scroll-animate fade-up sty-150">
+            <p class="font-poppins sty-151">
+              Dengan segala kerendahan hati, kami ucapkan terima kasih yang
+              sebesar-besarnya atas do'a, restu, dan kehadiran
+              Bapak/Ibu/Saudara/i dalam momen bahagia ini. Semoga kebaikan Anda
+              dibalas dengan keberkahan yang berlipat ganda oleh Allah SWT.
+            </p>
+          </div>
+
+          <div class="scroll-animate fade-up sty-152">
+            <p class="font-poppins sty-153">KAMI YANG BERBAHAGIA</p>
+            <h3 class="font-anthela sty-154">Rizqi &amp; Nurul</h3>
+            <p class="font-playfair sty-155">beserta segenap keluarga besar</p>
+          </div>
+
+          <div class="scroll-animate fade-up sty-156">
+            <div class="sty-157">
+              <p class="font-playfair sty-158">
+                Wassalamu'alaikum Warahmatullahi Wabarakatuh
+              </p>
+            </div>
+          </div>
+
+          <div class="sty-159">
+            <p class="font-poppins sty-160">
+              © 2026 &bull; Wedding Invitation by ❤️
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
+    <!-- end #main-content -->
 
-    <p class="font-poppins scroll-animate fade-up sty-122" >"Kehadiran serta do'a Anda adalah karunia terbesar bagi kami. Jika berkenan memberikan kado, akan sangat meringankan beban kami dalam membina rumah tangga. Terima kasih atas kasih sayangnya." 💛</p>
-  </div>
-</section>
-
-<!-- Section 6: Gallery -->
-<section id="section-gallery" class="scroll-section sty-123" >
-  <div class="page-container sty-124" >
-    <img src="Assets/Video/background.gif" loading="lazy" decoding="async" alt="" aria-hidden="true" class="page-bg-gif"/>
-    <div class="page-overlay" aria-hidden="true"></div>
-    <div class="sparkles-host" data-count="12"></div>
-
-    <div class="scroll-animate fade-up sty-125" >
-      <div class="floating-animation sty-126" >📸</div>
-      <h2 class="font-anthela sty-127" >Kenangan Kami</h2>
-      <div class="decorative-line sty-128" ></div>
-    </div>
-
-    <div class="sty-129" >
-      <div class="gallery-image gallery-img scroll-animate fade-up sty-130" onclick="toggleZoom(this)" >
-        <img class="sty-131" src="Assets/Image/covermempelai.jpeg" alt="Gallery 1"  loading="lazy" decoding="async"/>
-      </div>
-      <div class="gallery-image gallery-img scroll-animate fade-up sty-132" onclick="toggleZoom(this)" >
-        <img class="sty-133" src="Assets/Image/gallery.jpeg" alt="Gallery 2"  loading="lazy" decoding="async"/>
-      </div>
-      <div class="gallery-image gallery-img scroll-animate fade-up sty-134" onclick="toggleZoom(this)" >
-        <img class="sty-135" src="Assets/Image/gallery1.jpeg" alt="Gallery 3"  loading="lazy" decoding="async"/>
-      </div>
-      <div class="gallery-image gallery-img scroll-animate fade-up sty-136" onclick="toggleZoom(this)" >
-        <img class="sty-137" src="Assets/Image/gallery2.jpeg" alt="Gallery 4"  loading="lazy" decoding="async"/>
-      </div>
-      <div class="gallery-image gallery-img scroll-animate fade-up sty-138" onclick="toggleZoom(this)" >
-        <img class="sty-139" src="Assets/Image/gallery3.jpeg" alt="Gallery 5"  loading="lazy" decoding="async"/>
-      </div>
-    </div>
-
-    <div class="scroll-animate fade-up sty-140" >
-      <p class="font-poppins sty-141" >"Setiap foto adalah kenangan yang telah membekas, menjadi saksi perjalanan cinta kami menuju hari bahagia."</p>
-    </div>
-  </div>
-</section>
-
-<!-- Section 7: Penutup -->
-<section id="section-penutup" class="scroll-section sty-142" >
-  <div class="page-container sty-143" >
-    <div class="sparkles-host" data-count="40"></div>
-    <div class="sty-144" id="penutup-stars" ></div>
-
-    <div class="scroll-animate fade-up sty-145" >
-      <div class="star-rotate-wrap sty-146" >
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-          <circle cx="30" cy="30" r="28" stroke="#D8C3A5" stroke-width="1" stroke-dasharray="4 4"/>
-          <path d="M30 18 L34 28 L44 28 L36 35 L39 45 L30 39 L21 45 L24 35 L16 28 L26 28 Z" fill="#ff0000" opacity="0.95" stroke="#D8C3A5" stroke-width="0.5"/>
-        </svg>
-      </div>
-      <p class="font-poppins sty-147" >Terima Kasih</p>
-      <h2 class="font-anthela sty-148" >Atas Kehadiran</h2>
-      <div class="decorative-line sty-149" ></div>
-    </div>
-
-    <div class="scroll-animate fade-up sty-150" >
-      <p class="font-poppins sty-151" >Dengan segala kerendahan hati, kami ucapkan terima kasih yang sebesar-besarnya atas do'a, restu, dan kehadiran Bapak/Ibu/Saudara/i dalam momen bahagia ini. Semoga kebaikan Anda dibalas dengan keberkahan yang berlipat ganda oleh Allah SWT.</p>
-    </div>
-
-    <div class="scroll-animate fade-up sty-152" >
-      <p class="font-poppins sty-153" >KAMI YANG BERBAHAGIA</p>
-      <h3 class="font-anthela sty-154" >Rizqi &amp; Nurul</h3>
-      <p class="font-playfair sty-155" >beserta segenap keluarga besar</p>
-    </div>
-
-    <div class="scroll-animate fade-up sty-156" >
-      <div class="sty-157" >
-        <p class="font-playfair sty-158" >Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
-      </div>
-    </div>
-
-    <div class="sty-159" >
-      <p class="font-poppins sty-160" >© 2026 &bull; Wedding Invitation by ❤️</p>
-    </div>
-  </div>
-</section>
-
-</div><!-- end #main-content -->
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
-

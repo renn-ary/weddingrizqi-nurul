@@ -65,7 +65,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   position: absolute;
   background: #D8C3A5;
   border-radius: 50%;
-  box-shadow: 0 0 6px #D8C3A5, 0 0 12px #ff0000;
+  box-shadow: 0 0 6px #D8C3A5, 0 0 12px #9e2a2b;
   animation: sparkle 2s ease-in-out infinite;
 }
 @keyframes sparkle {
@@ -151,16 +151,16 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 
 /* ===== BUTTONS ===== */
 .btn-primary {
-  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  background: #9e2a2b;
   color: #fff; border: 2px solid #D8C3A5;
   padding: 16px 40px; border-radius: 50px;
   font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 16px;
-  cursor: pointer; box-shadow: 0 8px 32px rgba(255,0,0,0.45);
+  cursor: pointer; box-shadow: 0 8px 32px rgba(158,42,43,0.45);
   transition: all 0.3s ease; position: relative; overflow: hidden; outline: none;
   animation: bobbing 2s ease-in-out 1.6s infinite;
 }
 @keyframes bobbing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
-.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(255,0,0,0.55); }
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(158,42,43,0.55); }
 .btn-primary:focus, .btn-primary:active { outline: none; }
 .btn-primary::before {
   content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
@@ -170,14 +170,14 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .btn-primary:hover::before { left: 100%; }
 
 .btn-gift {
-  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  background: #9e2a2b;
   color: #fff; border: 1px solid #D8C3A5;
   padding: 12px 28px; border-radius: 12px;
   font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 14px;
-  cursor: pointer; box-shadow: 0 6px 24px rgba(255,0,0,0.35);
+  cursor: pointer; box-shadow: 0 6px 24px rgba(158,42,43,0.35);
   transition: all 0.3s ease;
 }
-.btn-gift:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,0,0,0.45); }
+.btn-gift:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(158,42,43,0.45); }
 
 /* ===== COUNTDOWN BOX ===== */
 .countdown-box {
@@ -202,12 +202,12 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   width: 100px; height: 100px;
   border-radius: 50%;
   margin: 0 auto 20px;
-  background: linear-gradient(135deg, #ff0000, #ff0000);
+  background: #9e2a2b;
   display: flex; align-items: center; justify-content: center;
   font-size: 48px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   overflow: hidden;
-  border: 3px solid #ff0000;
+  border: 3px solid #9e2a2b;
 }
 .avatar-animate {
   animation: avatarRock 4s ease-in-out infinite;
@@ -221,7 +221,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   border: 2px solid #D8C3A5;
   transition: all 0.4s ease; transform-style: preserve-3d;
 }
-.bank-card:hover { transform: translateY(-8px) rotateX(3deg); box-shadow: 0 20px 60px rgba(255,0,0,0.2); border-color: #ff0000; }
+.bank-card:hover { transform: translateY(-8px) rotateX(3deg); box-shadow: 0 20px 60px rgba(158,42,43,0.2); border-color: #9e2a2b; }
 
 /* ===== GALLERY ===== */
 .gallery-image { border-radius: 16px; box-shadow: 0 8px 32px rgba(37,37,37,0.18); transition: transform 0.4s ease; border: 3px solid #fff; }
@@ -235,10 +235,10 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   background: rgba(255,255,255,0.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 20px rgba(37,37,37,0.2);
-  border: 2px solid #ff0000; cursor: pointer; transition: all 0.3s ease;
+  border: 2px solid #9e2a2b; cursor: pointer; transition: all 0.3s ease;
 }
 .music-player:hover { transform: scale(1.1); }
-.music-player.playing { animation: rotateMusic 4s linear infinite; border-color: #D8C3A5; box-shadow: 0 0 20px rgba(255,0,0,0.3); }
+.music-player.playing { animation: rotateMusic 4s linear infinite; border-color: #D8C3A5; box-shadow: 0 0 20px rgba(158,42,43,0.3); }
 .music-player.scrolling { transform: translateY(-30px) scale(0.9); opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease; }
 @keyframes rotateMusic { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -250,7 +250,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 }
 .nav-dot {
   width: 12px; height: 12px; border-radius: 50%;
-  background: rgba(216,195,165,0.35); border: 2px solid #ff0000;
+  background: rgba(216,195,165,0.35); border: 2px solid #9e2a2b;
   cursor: pointer; transition: all 0.3s ease;
   position: relative;
   pointer-events: auto;
@@ -263,15 +263,15 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   top: -16px; bottom: -16px; left: -16px; right: -16px;
 }
 .nav-dot:hover {
-  background: rgba(255,0,0,0.4);
+  background: rgba(158,42,43,0.4);
   transform: scale(1.2);
 }
 /* Active dot: solid red with glow */
 .nav-dot.active {
-  background: #ff0000;
+  background: #9e2a2b;
   transform: scale(1.4);
-  box-shadow: 0 0 12px rgba(255,0,0,0.6), 0 0 4px rgba(255,0,0,0.8);
-  border-color: #ff0000;
+  box-shadow: 0 0 12px rgba(158,42,43,0.6), 0 0 4px rgba(158,42,43,0.8);
+  border-color: #9e2a2b;
 }
 /* Full hide (display toggle) */
 .nav-dots.hidden { transform: translateX(40px) translateY(-50%) scale(0.8); opacity: 0; pointer-events: none; }
@@ -281,10 +281,10 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 /* ===== TOAST ===== */
 .toast-success {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  background: #9e2a2b;
   color: #fff; padding: 20px 40px; border-radius: 20px;
   font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 16px;
-  z-index: 9999; box-shadow: 0 20px 60px rgba(255,0,0,0.5), 0 0 0 6px rgba(216,195,165,0.15);
+  z-index: 9999; box-shadow: 0 20px 60px rgba(158,42,43,0.5), 0 0 0 6px rgba(216,195,165,0.15);
   display: flex; align-items: center; gap: 12px;
   border: 2px solid #D8C3A5; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   min-width: 240px; justify-content: center;
@@ -320,7 +320,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .penutup-star-dot {
   position: absolute; width: 2px; height: 2px;
   background: #D8C3A5; border-radius: 50%;
-  box-shadow: 0 0 6px #D8C3A5, 0 0 12px #ff0000;
+  box-shadow: 0 0 6px #D8C3A5, 0 0 12px #9e2a2b;
   animation: starPulse var(--dur, 3s) ease-in-out var(--delay, 0s) infinite;
 }
 @keyframes starPulse { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1.5); } }
@@ -356,23 +356,23 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-21 { font-size:14px;color:#252525;margin-bottom:48px;padding:8px 22px;background:#e5e5e548;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
 .sty-22 { display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;max-width:420px;position:relative;z-index:1; }
 .sty-23 { text-align:center; }
-.sty-24 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#ff0000; }
+.sty-24 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#9e2a2b; }
 .sty-25 { font-size:12px;color:#6B6B6B;margin-top:8px; }
 .sty-26 { text-align:center; }
-.sty-27 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#ff0000; }
+.sty-27 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#9e2a2b; }
 .sty-28 { font-size:12px;color:#6B6B6B;margin-top:8px; }
 .sty-29 { text-align:center; }
-.sty-30 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#ff0000; }
+.sty-30 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#9e2a2b; }
 .sty-31 { font-size:12px;color:#6B6B6B;margin-top:8px; }
 .sty-32 { text-align:center; }
-.sty-33 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#ff0000; }
+.sty-33 { font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1;color:#9e2a2b; }
 .sty-34 { font-size:12px;color:#6B6B6B;margin-top:8px; }
 .sty-35 { display:none;position:relative;z-index:1;text-align:center;padding:24px 32px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:20px; }
 .sty-36 { font-size:clamp(22px,5vw,28px);font-weight:600; }
 .sty-37 { margin-top:48px;text-align:center;position:relative;z-index:1; }
 .sty-38 { font-size:13px;letter-spacing:5px;color:#252525;text-transform:uppercase;margin-bottom:16px;padding:10px 22px;background:#e5e5e548;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
 .sty-39 { font-size:14px;color:#6B6B6B;max-width:320px;line-height:1.8; }
-.sty-40 { font-size:13px;color:#ff0000;margin-top:12px;font-style:italic; }
+.sty-40 { font-size:13px;color:#9e2a2b;margin-top:12px;font-style:italic; }
 .sty-41 { min-height:100vh;width:100%;position:relative; }
 .sty-42 { min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;position:relative;background-color:#F5F0E8; }
 .sty-43 { text-align:center;position:relative;z-index:1; }
@@ -381,9 +381,9 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-46 { background:#e5e5e5;border-radius:4px; }
 .sty-47 { margin-top:40px;max-width:420px;width:100%;background:#e5e5e5;border-radius:24px;padding:32px 24px;border:1px solid #e5e5e5;box-shadow:0 12px 48px rgba(223,212,212,0.08);position:relative;z-index:1; }
 .sty-48 { text-align:center;margin-bottom:24px;padding:20px 16px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:20px; }
-.sty-49 { font-size:28px;color:#ff0000;direction:rtl;line-height:2; }
+.sty-49 { font-size:28px;color:#9e2a2b;direction:rtl;line-height:2; }
 .sty-50 { font-size:13px;color:#6B6B6B;font-style:italic;text-align:center;margin-bottom:16px; }
-.sty-51 { font-size:12px;color:#ff0000;text-align:right;margin-bottom:24px; }
+.sty-51 { font-size:12px;color:#9e2a2b;text-align:right;margin-bottom:24px; }
 .sty-52 { border-top:1px solid #e5e5e5;padding-top:24px; }
 .sty-53 { font-size:14px;color:#252525;text-align:center;line-height:1.9; }
 .sty-54 { min-height:100vh;width:100%;position:relative; }
@@ -393,19 +393,19 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-58 { background:#e5e5e5;border-radius:4px; }
 .sty-59 { display:flex;flex-direction:column;gap:32px;width:100%;max-width:420px;position:relative;z-index:1; }
 .sty-60 { background:#e5e5e5;border-radius:24px;padding:32px 24px;text-align:center;box-shadow:0 16px 56px rgba(0,0,0,0.1);border:1px solid #e5e5e5;position:relative;overflow:hidden; }
-.sty-61 { position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(135deg,#ff0000,#ff0000); }
+.sty-61 { position:absolute;top:0;left:0;right:0;height:6px;background:#9e2a2b; }
 .sty-62 { width:100%;height:100%;object-fit:cover; }
 .sty-63 { font-size:12px;letter-spacing:4px;color:#252525;text-transform:uppercase;margin-bottom:8px;padding:6px 16px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
-.sty-64 { font-size:clamp(26px,6.5vw,32px);margin-bottom:12px;font-weight:400;color:#ff0000; }
+.sty-64 { font-size:clamp(26px,6.5vw,32px);margin-bottom:12px;font-weight:400;color:#9e2a2b; }
 .sty-65 { width:40px;height:2px;background:#e5e5e5;border-radius:4px;margin:0 auto 16px; }
 .sty-66 { font-size:13px;color:#252525;line-height:1.7;padding:8px 14px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:12px; }
 .sty-67 { font-size:13px;color:#252525;line-height:1.7;padding:8px 14px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:12px;margin-top:8px; }
 .sty-68 { background:#e5e5e5;border-radius:24px;padding:32px 24px;text-align:center;box-shadow:0 16px 56px rgba(0,0,0,0.1);border:1px solid #e5e5e5;position:relative;overflow:hidden; }
-.sty-69 { position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(135deg,#ff0000,#ff0000); }
+.sty-69 { position:absolute;top:0;left:0;right:0;height:6px;background:#9e2a2b; }
 .sty-70 { animation-delay:0.5s; }
 .sty-71 { width:100%;height:100%;object-fit:cover; }
 .sty-72 { font-size:12px;letter-spacing:4px;color:#252525;text-transform:uppercase;margin-bottom:8px;padding:6px 16px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
-.sty-73 { font-size:clamp(26px,6.5vw,32px);margin-bottom:12px;font-weight:400;color:#ff0000; }
+.sty-73 { font-size:clamp(26px,6.5vw,32px);margin-bottom:12px;font-weight:400;color:#9e2a2b; }
 .sty-74 { width:40px;height:2px;background:#e5e5e5;border-radius:4px;margin:0 auto 16px; }
 .sty-75 { font-size:13px;color:#252525;line-height:1.7;padding:8px 14px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:12px; }
 .sty-76 { font-size:13px;color:#252525;line-height:1.7;padding:8px 14px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:12px;margin-top:8px; }
@@ -419,7 +419,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-84 { display:flex;align-items:flex-start;gap:16px; }
 .sty-85 { width:56px;height:56px;border-radius:16px;background:#e5e5e5;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0; }
 .sty-86 { flex:1; }
-.sty-87 { font-size:13px;color:#ff0000;font-weight:500;margin-bottom:4px;padding:4px 12px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
+.sty-87 { font-size:13px;color:#9e2a2b;font-weight:500;margin-bottom:4px;padding:4px 12px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:50px;display:inline-block; }
 .sty-88 { font-size:13px;color:#252525;padding:4px 12px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:50px;display:inline-block;margin-top:4px; }
 .sty-89 { width:100%;max-width:420px;border-radius:20px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.15);margin-bottom:24px;position:relative;z-index:1; }
 .sty-90 { border:0;display:block; }
@@ -436,23 +436,23 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-101 { display:flex;flex-direction:column;gap:20px;width:100%;max-width:420px;position:relative;z-index:1; }
 .sty-102 { background:#e5e5e5;border-radius:20px;padding:28px 24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);border:1px solid #e5e5e5; }
 .sty-103 { display:flex;align-items:center;gap:16px;margin-bottom:20px; }
-.sty-104 { width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#ff0000,#ff0000);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,0.15); }
+.sty-104 { width:56px;height:56px;border-radius:16px;background:#9e2a2b;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,0.15); }
 .sty-105 { font-size:20px;color:#252525;font-weight:600; }
 .sty-106 { font-size:12px;color:#252525; }
-.sty-107 { font-size:18px;color:#ff0000; }
+.sty-107 { font-size:18px;color:#9e2a2b; }
 .sty-108 { background:#e5e5e5;border-radius:12px;padding:16px 20px;border:1px solid #e5e5e5;margin-bottom:16px; }
 .sty-109 { font-size:11px;color:#252525;margin-bottom:4px; }
-.sty-110 { font-size:clamp(20px,5.5vw,24px);color:#ff0000;font-weight:700;letter-spacing:2px; }
+.sty-110 { font-size:clamp(20px,5.5vw,24px);color:#9e2a2b;font-weight:700;letter-spacing:2px; }
 .sty-111 { width:100%;padding:14px; }
 .sty-112 { background:#e5e5e5;border-radius:20px;padding:28px 24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);border:1px solid #e5e5e5; }
 .sty-113 { display:flex;align-items:center;gap:16px;margin-bottom:20px; }
-.sty-114 { width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#ff0000,#ff0000);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,0.15); }
+.sty-114 { width:56px;height:56px;border-radius:16px;background:#9e2a2b;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,0.15); }
 .sty-115 { font-size:20px;color:#252525;font-weight:600; }
 .sty-116 { font-size:12px;color:#252525; }
-.sty-117 { font-size:18px;color:#ff0000; }
+.sty-117 { font-size:18px;color:#9e2a2b; }
 .sty-118 { background:#e5e5e5;border-radius:12px;padding:16px 20px;border:1px solid #e5e5e5;margin-bottom:16px; }
 .sty-119 { font-size:11px;color:#252525;margin-bottom:4px; }
-.sty-120 { font-size:clamp(20px,5.5vw,24px);color:#ff0000;font-weight:700;letter-spacing:2px; }
+.sty-120 { font-size:clamp(20px,5.5vw,24px);color:#9e2a2b;font-weight:700;letter-spacing:2px; }
 .sty-121 { width:100%;padding:14px; }
 .sty-122 { margin-top:36px;font-size:12px;color:#252525;text-align:center;max-width:360px;line-height:1.8;font-style:italic;padding:12px 16px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:14px;position:relative;z-index:1; }
 .sty-123 { min-height:100vh;width:100%;position:relative; }
@@ -475,18 +475,18 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .sty-140 { margin-top:16px;text-align:center;max-width:360px;position:relative;z-index:1; }
 .sty-141 { font-size:13px;color:#252525;line-height:1.9;font-style:italic;padding:12px 16px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:14px; }
 .sty-142 { min-height:100vh;width:100%;position:relative; }
-.sty-143 { min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;position:relative;background:linear-gradient(180deg,#252525 0%,#3A1520 35%,#ff0000 70%,#252525 100%);overflow:hidden; }
+.sty-143 { min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;position:relative;background:linear-gradient(180deg,#252525 0%,#3A1520 35%,#9e2a2b 70%,#252525 100%);overflow:hidden; }
 .sty-144 { position:absolute;inset:0;z-index:0; }
 .sty-145 { position:relative;z-index:1;text-align:center; }
 .sty-146 { margin-bottom:20px;display:inline-block; }
-.sty-147 { font-size:13px;letter-spacing:5px;color:#ff0000;text-transform:uppercase;margin-bottom:12px;opacity:0.95; }
-.sty-148 { font-size:clamp(44px,11vw,68px);margin-bottom:12px;font-weight:400;color:#ff0000; }
+.sty-147 { font-size:13px;letter-spacing:5px;color:#9e2a2b;text-transform:uppercase;margin-bottom:12px;opacity:0.95; }
+.sty-148 { font-size:clamp(44px,11vw,68px);margin-bottom:12px;font-weight:400;color:#9e2a2b; }
 .sty-149 { background:#e5e5e5;border-radius:4px; }
 .sty-150 { position:relative;z-index:1;margin-top:36px;max-width:380px;text-align:center;padding:20px 24px; }
 .sty-151 { font-size:14px;color:#ffffff;line-height:1.9; }
 .sty-152 { position:relative;z-index:1;margin-top:40px;text-align:center;padding:20px 24px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:20px; }
 .sty-153 { font-size:12px;color:#252525;margin-bottom:8px;letter-spacing:3px; }
-.sty-154 { font-size:clamp(36px,9vw,52px);margin-bottom:4px;font-weight:400;color:#ff0000; }
+.sty-154 { font-size:clamp(36px,9vw,52px);margin-bottom:4px;font-weight:400;color:#9e2a2b; }
 .sty-155 { font-size:14px;color:#252525;font-style:italic; }
 .sty-156 { position:relative;z-index:1;margin-top:48px; }
 .sty-157 { padding:14px 28px; }

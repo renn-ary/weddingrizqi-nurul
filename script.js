@@ -470,7 +470,7 @@ function initClickGuard() {
 const rsvpForm = document.getElementById("rsvpForm");
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxwT4AIu3K8nRwvRV4vPDCB2XFn8JP3XvNj3Z4wMPDC32M4l_81b4_TWRU2vBeQHktS/exec";
+  "https://script.google.com/macros/s/AKfycbwJPGM0BPhAp2NYTmyABiPMRnrCDvCRTrwD8U7AyFKOCIycCRAC1q5PAY5S9CIC3Y54/exec";
 
 if (rsvpForm) {
   rsvpForm.addEventListener("submit", async function (e) {

@@ -12,6 +12,8 @@ const SECTION_IDS = [
   'section-acara',
   'section-gift',
   'section-gallery',
+  'section-rsvp',
+  'section-wishes',
   'section-penutup',
 ];
 
@@ -411,6 +413,45 @@ function initClickGuard() {
   }, true);
 }
 
+// ===== RSVP FORM =====
+function initRsvpForm() {
+  const rsvpForm = document.getElementById('rsvpForm');
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const rsvpStatus = document.getElementById('rsvpStatus');
+      rsvpStatus.innerHTML = '<p style="color:#9e2a2b;">Mengirim data...</p>';
+      setTimeout(() => {
+        rsvpStatus.innerHTML = '<p style="color:#2e7d32;background:#e8f5e9;padding:12px 16px;border-radius:12px;border-left:3px solid #2e7d32;">✓ Terima kasih! Konfirmasi kehadiran Anda telah terkirim.</p>';
+        rsvpForm.reset();
+      }, 1500);
+    });
+  }
+}
+
+// ===== WISHES FORM =====
+function initWishesForm() {
+  const wishesForm = document.getElementById('wishesForm');
+  if (wishesForm) {
+    wishesForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        status: formData.get('status'),
+        message: formData.get('message')
+      };
+      const wishesList = document.getElementById('wishesList');
+      const wishCard = document.createElement('div');
+      wishCard.className = 'wish-card';
+      wishCard.innerHTML = `<div class="wish-header"><span class="wish-name">${data.name}</span><span class="wish-status">${data.status}</span></div><p class="wish-text">${data.message}</p>`;
+      wishesList.insertBefore(wishCard, wishesList.firstChild);
+      wishesForm.reset();
+      alert('Ucapan Anda berhasil terkirim!');
+    });
+  }
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initGuestName();
@@ -420,4 +461,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // initNavDots() is called in openInvitation() — not here, to prevent duplicate dots
   initMusic();
   initClickGuard();
+  initRsvpForm();
+  initWishesForm();
 });

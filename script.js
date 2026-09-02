@@ -473,75 +473,89 @@ const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwJPGM0BPhAp2NYTmyABiPMRnrCDvCRTrwD8U7AyFKOCIycCRAC1q5PAY5S9CIC3Y54/exec";
 
 if (rsvpForm) {
+
   rsvpForm.addEventListener("submit", async function (e) {
+
     e.preventDefault();
 
-    const rsvpStatus = document.getElementById("rsvpStatus");
+    const rsvpStatus =
+      document.getElementById("rsvpStatus");
 
-    const submitButton = rsvpForm.querySelector(".btn-submit");
+    const submitButton =
+      rsvpForm.querySelector(".btn-submit");
 
-    // Ambil nilai form
-    const name = document.getElementById("rsvpName").value.trim();
+    // Ambil data form
+    const name =
+      document.getElementById("rsvpName").value.trim();
 
-    const attendanceSelect = document.getElementById("rsvpAttendance");
+    const attendanceSelect =
+      document.getElementById("rsvpAttendance");
 
     const attendance =
-      attendanceSelect.options[attendanceSelect.selectedIndex].text;
+      attendanceSelect.options[
+        attendanceSelect.selectedIndex
+      ].text;
 
-    const guests = document.getElementById("rsvpGuests").value;
+    const guests =
+      document.getElementById("rsvpGuests").value;
 
-    const message = document.getElementById("rsvpMessage").value.trim();
+    const message =
+      document.getElementById("rsvpMessage").value.trim();
 
-    // Data yang akan dikirim
+    // Data yang dikirim
     const formData = {
       name: name,
       attendance: attendance,
       guests: guests,
-      message: message,
+      message: message
     };
 
-    // Status loading
+    // Loading
     rsvpStatus.innerHTML =
-      '<p style="color: var(--primary);">' + "Mengirim data..." + "</p>";
+      '<p style="color: var(--primary);">' +
+      'Mengirim data...' +
+      '</p>';
 
-    // Disable tombol
     submitButton.disabled = true;
     submitButton.style.opacity = "0.6";
 
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        body: JSON.stringify(formData),
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(formData)
       });
 
-      const result = await response.json();
-
-      if (!result.success) {
-        throw new Error(result.message);
-      }
-
-      // Berhasil
+      // Anggap request berhasil dikirim
       rsvpStatus.innerHTML =
         '<p style="color: #2e7d32;">' +
-        "Terima kasih! Konfirmasi kehadiran Anda telah terkirim." +
-        "</p>";
+        'Terima kasih! Konfirmasi kehadiran Anda telah terkirim.' +
+        '</p>';
 
-      // Kosongkan form
       rsvpForm.reset();
+
     } catch (error) {
-      console.error(error);
+
+      console.error("RSVP Error:", error);
 
       rsvpStatus.innerHTML =
         '<p style="color: #c62828;">' +
-        "Maaf, terjadi kesalahan saat mengirim data. " +
-        "Silakan coba lagi." +
-        "</p>";
+        'Maaf, terjadi kesalahan saat mengirim data. Silakan coba lagi.' +
+        '</p>';
+
     } finally {
-      // Aktifkan tombol kembali
+
       submitButton.disabled = false;
       submitButton.style.opacity = "1";
+
     }
+
   });
+
 }
 
 // ===== WISHES FORM =====

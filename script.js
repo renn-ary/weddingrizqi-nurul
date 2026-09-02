@@ -1,6 +1,6 @@
 /* ===== WEDDING INVITATION - script.js ===== */
 
-const WEDDING_DATE = new Date("2026-09-19T10:00:00");
+const WEDDING_DATE = new Date("2026-09-20T10:00:00");
 const WEDDING_LOCATION = "Sugihwaras, Jombang Regency, East Java";
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=9774%2B9C2+Sugihwaras,+Jombang+Regency,+East+Java";

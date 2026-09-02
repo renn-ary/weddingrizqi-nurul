@@ -1,20 +1,21 @@
 /* ===== WEDDING INVITATION - script.js ===== */
 
-const WEDDING_DATE = new Date('2026-09-19T10:00:00');
-const WEDDING_LOCATION = 'Sugihwaras, Jombang Regency, East Java';
-const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=9774%2B9C2+Sugihwaras,+Jombang+Regency,+East+Java';
+const WEDDING_DATE = new Date("2026-09-19T10:00:00");
+const WEDDING_LOCATION = "Sugihwaras, Jombang Regency, East Java";
+const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=9774%2B9C2+Sugihwaras,+Jombang+Regency,+East+Java";
 
 const SECTION_IDS = [
-  'section-opening',
-  'section-countdown',
-  'section-doa',
-  'section-mempelai',
-  'section-acara',
-  'section-gift',
-  'section-gallery',
-  'section-rsvp',
-  'section-wishes',
-  'section-penutup',
+  "section-opening",
+  "section-countdown",
+  "section-doa",
+  "section-mempelai",
+  "section-acara",
+  "section-gift",
+  "section-gallery",
+  "section-rsvp",
+  "section-wishes",
+  "section-penutup",
 ];
 
 // ===== STATE =====
@@ -30,17 +31,19 @@ let scrollObserver = null;
 // ===== GUEST NAME =====
 function initGuestName() {
   const params = new URLSearchParams(window.location.search);
-  const to = params.get('to');
+  const to = params.get("to");
   if (to) {
-    document.getElementById('guest-name').textContent = decodeURIComponent(to.replace(/\+/g, ' '));
+    document.getElementById("guest-name").textContent = decodeURIComponent(
+      to.replace(/\+/g, " "),
+    );
   }
 }
 
 // ===== SPARKLES =====
 function createSparkles(host, count) {
   for (let i = 0; i < count; i++) {
-    const el = document.createElement('div');
-    el.className = 'sparkle';
+    const el = document.createElement("div");
+    el.className = "sparkle";
     const size = Math.random() * 4 + 2;
     el.style.cssText = `
       left:${Math.random() * 100}%;
@@ -55,23 +58,23 @@ function createSparkles(host, count) {
 
 function initAllSparkles() {
   // Cover sparkles
-  createSparkles(document.getElementById('cover-sparkles'), 30);
+  createSparkles(document.getElementById("cover-sparkles"), 30);
   // Section sparkles
-  document.querySelectorAll('.sparkles-host[data-count]').forEach(host => {
+  document.querySelectorAll(".sparkles-host[data-count]").forEach((host) => {
     createSparkles(host, parseInt(host.dataset.count, 10));
   });
 }
 
 // ===== PENUTUP STARS =====
 function initPenutupStars() {
-  const container = document.getElementById('penutup-stars');
+  const container = document.getElementById("penutup-stars");
   if (!container) return;
   for (let i = 0; i < 30; i++) {
-    const el = document.createElement('div');
-    el.className = 'penutup-star-dot';
+    const el = document.createElement("div");
+    el.className = "penutup-star-dot";
     const dur = (2 + Math.random() * 3).toFixed(2);
     const delay = (Math.random() * 3).toFixed(2);
-    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${dur}s;--delay:${delay}s;`;
+    el.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;--dur:${dur}s;--delay:${delay}s;`;
     container.appendChild(el);
   }
 }
@@ -80,7 +83,8 @@ function initPenutupStars() {
 function calcCountdown() {
   const now = Date.now();
   const distance = WEDDING_DATE.getTime() - now;
-  if (distance < 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, finished: true };
+  if (distance < 0)
+    return { days: 0, hours: 0, minutes: 0, seconds: 0, finished: true };
   return {
     days: Math.floor(distance / (1000 * 60 * 60 * 24)),
     hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -91,40 +95,43 @@ function calcCountdown() {
 }
 
 function updateCountdownUI(cd) {
-  const grid = document.getElementById('countdown-grid');
-  const finished = document.getElementById('countdown-finished');
+  const grid = document.getElementById("countdown-grid");
+  const finished = document.getElementById("countdown-finished");
   if (cd.finished) {
-    grid.style.display = 'none';
-    finished.style.display = 'block';
+    grid.style.display = "none";
+    finished.style.display = "block";
     return;
   }
-  const pad = n => String(n).padStart(2, '0');
-  document.getElementById('cd-days').textContent = pad(cd.days);
-  document.getElementById('cd-hours').textContent = pad(cd.hours);
-  document.getElementById('cd-minutes').textContent = pad(cd.minutes);
-  document.getElementById('cd-seconds').textContent = pad(cd.seconds);
+  const pad = (n) => String(n).padStart(2, "0");
+  document.getElementById("cd-days").textContent = pad(cd.days);
+  document.getElementById("cd-hours").textContent = pad(cd.hours);
+  document.getElementById("cd-minutes").textContent = pad(cd.minutes);
+  document.getElementById("cd-seconds").textContent = pad(cd.seconds);
 }
 
 function initCountdown() {
   updateCountdownUI(calcCountdown());
-  countdownInterval = setInterval(() => updateCountdownUI(calcCountdown()), 1000);
+  countdownInterval = setInterval(
+    () => updateCountdownUI(calcCountdown()),
+    1000,
+  );
 }
 
 // ===== MUSIC PLAYER =====
 function initMusic() {
-  const player = document.getElementById('music-player');
-  const audio = document.getElementById('audio');
+  const player = document.getElementById("music-player");
+  const audio = document.getElementById("audio");
   if (!audio) return;
 
   // visibility change pause/resume
-  document.addEventListener('visibilitychange', () => {
+  document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       audio.pause();
       isMusicPlaying = false;
       syncMusicUI();
     } else if (isCoverOpen) {
-      const saved = localStorage.getItem('musicStatus');
-      if (saved !== 'paused') {
+      const saved = localStorage.getItem("musicStatus");
+      if (saved !== "paused") {
         audio.play().catch(() => {});
         isMusicPlaying = true;
         syncMusicUI();
@@ -134,25 +141,25 @@ function initMusic() {
 }
 
 function syncMusicUI() {
-  const player = document.getElementById('music-player');
-  const iconPlay = document.getElementById('music-icon-play');
-  const iconPause = document.getElementById('music-icon-pause');
+  const player = document.getElementById("music-player");
+  const iconPlay = document.getElementById("music-icon-play");
+  const iconPause = document.getElementById("music-icon-pause");
   if (isMusicPlaying) {
-    player.classList.add('playing');
-    iconPlay.style.display = 'none';
-    iconPause.style.display = 'block';
+    player.classList.add("playing");
+    iconPlay.style.display = "none";
+    iconPause.style.display = "block";
   } else {
-    player.classList.remove('playing');
-    iconPlay.style.display = 'block';
-    iconPause.style.display = 'none';
+    player.classList.remove("playing");
+    iconPlay.style.display = "block";
+    iconPause.style.display = "none";
   }
 }
 
 function toggleMusic() {
-  const audio = document.getElementById('audio');
+  const audio = document.getElementById("audio");
   if (!audio) return;
   isMusicPlaying = !isMusicPlaying;
-  localStorage.setItem('musicStatus', isMusicPlaying ? 'playing' : 'paused');
+  localStorage.setItem("musicStatus", isMusicPlaying ? "playing" : "paused");
   if (isMusicPlaying) {
     audio.play().catch(() => {});
   } else {
@@ -163,65 +170,72 @@ function toggleMusic() {
 
 // ===== OPEN INVITATION =====
 function openInvitation() {
-  const cover = document.getElementById('cover-page');
-  const main = document.getElementById('main-content');
-  const musicPlayer = document.getElementById('music-player');
-  const navDots = document.getElementById('nav-dots');
+  const cover = document.getElementById("cover-page");
+  const main = document.getElementById("main-content");
+  const musicPlayer = document.getElementById("music-player");
+  const navDots = document.getElementById("nav-dots");
 
-  cover.classList.add('sliding-up');
-  cover.addEventListener('animationend', () => {
-    cover.style.display = 'none';
-    main.style.display = 'block';
-    musicPlayer.style.display = 'flex';
-    navDots.style.display = 'flex';
+  cover.classList.add("sliding-up");
+  cover.addEventListener(
+    "animationend",
+    () => {
+      cover.style.display = "none";
+      main.style.display = "block";
+      musicPlayer.style.display = "flex";
+      navDots.style.display = "flex";
 
-    // Enable scrolling
-    document.body.style.overflowY = 'auto';
-    document.body.style.overflowX = 'hidden';
-    document.documentElement.style.overflowY = 'auto';
-    document.documentElement.style.overflowX = 'hidden';
-    document.body.style.height = 'auto';
-    document.documentElement.style.height = 'auto';
-    document.body.style.msOverflowStyle = 'none';
-    document.body.style.scrollbarWidth = 'none';
+      // Enable scrolling
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
+      document.documentElement.style.overflowY = "auto";
+      document.documentElement.style.overflowX = "hidden";
+      document.body.style.height = "auto";
+      document.documentElement.style.height = "auto";
+      document.body.style.msOverflowStyle = "none";
+      document.body.style.scrollbarWidth = "none";
 
-    isCoverOpen = true;
+      isCoverOpen = true;
 
-    // Music
-    const saved = localStorage.getItem('musicStatus');
-    musicEnabled = true;
-    if (saved !== 'paused') {
-      const audio = document.getElementById('audio');
-      audio.play().catch(() => {});
-      isMusicPlaying = true;
-    }
-    syncMusicUI();
+      // Music
+      const saved = localStorage.getItem("musicStatus");
+      musicEnabled = true;
+      if (saved !== "paused") {
+        const audio = document.getElementById("audio");
+        audio.play().catch(() => {});
+        isMusicPlaying = true;
+      }
+      syncMusicUI();
 
-    // Scroll to top
-    setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 50);
+      // Scroll to top
+      setTimeout(
+        () => window.scrollTo({ top: 0, left: 0, behavior: "auto" }),
+        50,
+      );
 
-    initNavDots();
-    initScrollTracking();
-    initScrollAnimations();
-  }, { once: true });
+      initNavDots();
+      initScrollTracking();
+      initScrollAnimations();
+    },
+    { once: true },
+  );
 }
 
 // ===== NAVIGATION DOTS =====
 function initNavDots() {
-  const container = document.getElementById('nav-dots');
-  container.innerHTML = ''; // Clear any existing dots to prevent duplicates
+  const container = document.getElementById("nav-dots");
+  container.innerHTML = ""; // Clear any existing dots to prevent duplicates
   SECTION_IDS.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('role', 'button');
-    dot.setAttribute('aria-label', `Halaman ${i + 1}`);
+    const dot = document.createElement("div");
+    dot.className = "nav-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("role", "button");
+    dot.setAttribute("aria-label", `Halaman ${i + 1}`);
     dot.dataset.index = i;
     container.appendChild(dot);
   });
 
   // Single event delegation handler — works for both click and touch
   function handleDotTap(e) {
-    const dot = e.target.closest('.nav-dot');
+    const dot = e.target.closest(".nav-dot");
     if (!dot) return;
     e.preventDefault();
     e.stopPropagation();
@@ -231,21 +245,25 @@ function initNavDots() {
   }
 
   // Click handler in capture phase — fires BEFORE the click guard
-  container.addEventListener('click', handleDotTap, true);
+  container.addEventListener("click", handleDotTap, true);
 
   // Touch handler for mobile — fires immediately, no 300ms delay
-  container.addEventListener('touchend', (e) => {
-    const dot = e.target.closest('.nav-dot');
-    if (!dot) return;
-    e.preventDefault(); // Prevent ghost click
-    const index = parseInt(dot.dataset.index, 10);
-    if (!isNaN(index)) smoothScrollTo(index);
-  }, { passive: false });
+  container.addEventListener(
+    "touchend",
+    (e) => {
+      const dot = e.target.closest(".nav-dot");
+      if (!dot) return;
+      e.preventDefault(); // Prevent ghost click
+      const index = parseInt(dot.dataset.index, 10);
+      if (!isNaN(index)) smoothScrollTo(index);
+    },
+    { passive: false },
+  );
 }
 
 function updateNavDots(current) {
-  const dots = document.querySelectorAll('.nav-dot');
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+  const dots = document.querySelectorAll(".nav-dot");
+  dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
 }
 
 // ===== SMOOTH SCROLL =====
@@ -275,81 +293,97 @@ function smoothScrollTo(sectionIndex) {
 
 // ===== SCROLL TRACKING =====
 function initScrollTracking() {
-  const musicPlayer = document.getElementById('music-player');
-  const navDots = document.getElementById('nav-dots');
+  const musicPlayer = document.getElementById("music-player");
+  const navDots = document.getElementById("nav-dots");
 
-  window.addEventListener('scroll', () => {
-    // Hide music player while scrolling
-    musicPlayer.classList.add('scrolling');
-    clearTimeout(musicScrollTimeout);
-    musicScrollTimeout = setTimeout(() => musicPlayer.classList.remove('scrolling'), 1000);
+  window.addEventListener(
+    "scroll",
+    () => {
+      // Hide music player while scrolling
+      musicPlayer.classList.add("scrolling");
+      clearTimeout(musicScrollTimeout);
+      musicScrollTimeout = setTimeout(
+        () => musicPlayer.classList.remove("scrolling"),
+        1000,
+      );
 
-    // Visually fade nav dots briefly during scroll (no pointer-events block)
-    navDots.classList.add('scrolling');
-    clearTimeout(scrollHideNavTimeout);
-    scrollHideNavTimeout = setTimeout(() => navDots.classList.remove('scrolling'), 150);
+      // Visually fade nav dots briefly during scroll (no pointer-events block)
+      navDots.classList.add("scrolling");
+      clearTimeout(scrollHideNavTimeout);
+      scrollHideNavTimeout = setTimeout(
+        () => navDots.classList.remove("scrolling"),
+        150,
+      );
 
-    // Update active section
-    let current = 0;
-    for (let i = 0; i < SECTION_IDS.length; i++) {
-      const el = document.getElementById(SECTION_IDS[i]);
-      if (!el) continue;
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= window.innerHeight * 0.5) current = i;
-    }
-    if (current !== activeSection) {
-      activeSection = current;
-      updateNavDots(current);
-    }
-  }, { passive: true });
+      // Update active section
+      let current = 0;
+      for (let i = 0; i < SECTION_IDS.length; i++) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.5) current = i;
+      }
+      if (current !== activeSection) {
+        activeSection = current;
+        updateNavDots(current);
+      }
+    },
+    { passive: true },
+  );
 
   // Run once immediately
   requestAnimationFrame(() => {
-    const evt = new Event('scroll');
+    const evt = new Event("scroll");
     window.dispatchEvent(evt);
   });
 }
 
 // ===== SCROLL ANIMATIONS (IntersectionObserver) =====
 function initScrollAnimations() {
-  const els = document.querySelectorAll('.scroll-animate');
+  const els = document.querySelectorAll(".scroll-animate");
   let lastScrollTop = window.pageYOffset || 0;
 
-  els.forEach(el => {
-    if (!el.classList.contains('fade-up') && !el.classList.contains('fade-down')) {
-      el.classList.add('fade-up');
+  els.forEach((el) => {
+    if (
+      !el.classList.contains("fade-up") &&
+      !el.classList.contains("fade-down")
+    ) {
+      el.classList.add("fade-up");
     }
   });
 
-  scrollObserver = new IntersectionObserver((entries) => {
-    const currentScrollTop = window.pageYOffset || 0;
-    const scrollingDown = currentScrollTop >= lastScrollTop;
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (scrollingDown) {
-          entry.target.classList.remove('fade-down');
-          entry.target.classList.add('fade-up');
+  scrollObserver = new IntersectionObserver(
+    (entries) => {
+      const currentScrollTop = window.pageYOffset || 0;
+      const scrollingDown = currentScrollTop >= lastScrollTop;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (scrollingDown) {
+            entry.target.classList.remove("fade-down");
+            entry.target.classList.add("fade-up");
+          } else {
+            entry.target.classList.remove("fade-up");
+            entry.target.classList.add("fade-down");
+          }
+          void entry.target.offsetWidth;
+          entry.target.classList.add("visible");
         } else {
-          entry.target.classList.remove('fade-up');
-          entry.target.classList.add('fade-down');
+          entry.target.classList.remove("visible");
         }
-        void entry.target.offsetWidth;
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-    lastScrollTop = Math.max(0, currentScrollTop);
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      });
+      lastScrollTop = Math.max(0, currentScrollTop);
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+  );
 
-  els.forEach(el => scrollObserver.observe(el));
+  els.forEach((el) => scrollObserver.observe(el));
 
   // Immediately show visible elements
   requestAnimationFrame(() => {
-    els.forEach(el => {
+    els.forEach((el) => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add('visible');
+        el.classList.add("visible");
       }
     });
   });
@@ -357,103 +391,184 @@ function initScrollAnimations() {
 
 // ===== GALLERY ZOOM =====
 function toggleZoom(el) {
-  el.classList.toggle('zoomed');
+  el.classList.toggle("zoomed");
 }
 
 // ===== COPY NUMBER =====
 function copyNumber(number) {
-  navigator.clipboard.writeText(number).then(() => {
-    showToast();
-  }).catch(() => {
-    // Fallback for older browsers
-    const ta = document.createElement('textarea');
-    ta.value = number;
-    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;';
-    document.body.appendChild(ta);
-    ta.focus(); ta.select();
-    try { document.execCommand('copy'); showToast(); } catch(e) {}
-    document.body.removeChild(ta);
-  });
+  navigator.clipboard
+    .writeText(number)
+    .then(() => {
+      showToast();
+    })
+    .catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement("textarea");
+      ta.value = number;
+      ta.style.cssText = "position:fixed;top:-9999px;left:-9999px;";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast();
+      } catch (e) {}
+      document.body.removeChild(ta);
+    });
 }
 
 function showToast() {
-  const toast = document.getElementById('toast');
-  toast.style.display = 'flex';
-  toast.style.animation = 'none';
+  const toast = document.getElementById("toast");
+  toast.style.display = "flex";
+  toast.style.animation = "none";
   void toast.offsetWidth; // reflow
-  toast.style.animation = 'toastIn 0.4s cubic-bezier(0.17,0.89,0.32,1.27) both';
-  setTimeout(() => { toast.style.display = 'none'; }, 2500);
+  toast.style.animation = "toastIn 0.4s cubic-bezier(0.17,0.89,0.32,1.27) both";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 2500);
 }
 
 // ===== MAPS =====
 function openMaps() {
-  window.open(MAPS_URL, '_blank');
+  window.open(MAPS_URL, "_blank");
 }
 
 function shareLocation() {
   if (navigator.share) {
-    navigator.share({
-      title: 'Lokasi Pernikahan Rizqi & Nurul',
-      text: `Undangan Pernikahan - Lokasi: ${WEDDING_LOCATION}`,
-      url: MAPS_URL,
-    }).catch(() => {});
+    navigator
+      .share({
+        title: "Lokasi Pernikahan Rizqi & Nurul",
+        text: `Undangan Pernikahan - Lokasi: ${WEDDING_LOCATION}`,
+        url: MAPS_URL,
+      })
+      .catch(() => {});
   } else {
     navigator.clipboard.writeText(MAPS_URL).then(() => {
-      alert('Link Google Maps berhasil disalin!');
+      alert("Link Google Maps berhasil disalin!");
     });
   }
 }
 
 // ===== CLICK GUARD (prevent accidental scrolls being clicks) =====
 function initClickGuard() {
-  const INTERACTIVE = 'button, a, input, select, textarea, label, [role="button"], .nav-dot, .music-player, .btn-primary, .btn-gift, .gallery-image, .bank-card, .gallery-img';
-  const isInteractive = (el) => el && ((el.matches && el.matches(INTERACTIVE)) || (el.closest && el.closest(INTERACTIVE)));
-  document.addEventListener('click', (e) => {
-    if (!isInteractive(e.target)) e.stopPropagation();
-  }, true);
+  const INTERACTIVE =
+    'button, a, input, select, textarea, label, [role="button"], .nav-dot, .music-player, .btn-primary, .btn-gift, .gallery-image, .bank-card, .gallery-img';
+  const isInteractive = (el) =>
+    el &&
+    ((el.matches && el.matches(INTERACTIVE)) ||
+      (el.closest && el.closest(INTERACTIVE)));
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (!isInteractive(e.target)) e.stopPropagation();
+    },
+    true,
+  );
 }
 
 // ===== RSVP FORM =====
-function initRsvpForm() {
-  const rsvpForm = document.getElementById('rsvpForm');
-  if (rsvpForm) {
-    rsvpForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const rsvpStatus = document.getElementById('rsvpStatus');
-      rsvpStatus.innerHTML = '<p style="color:#9e2a2b;">Mengirim data...</p>';
-      setTimeout(() => {
-        rsvpStatus.innerHTML = '<p style="color:#2e7d32;background:#e8f5e9;padding:12px 16px;border-radius:12px;border-left:3px solid #2e7d32;">✓ Terima kasih! Konfirmasi kehadiran Anda telah terkirim.</p>';
-        rsvpForm.reset();
-      }, 1500);
-    });
-  }
+const rsvpForm = document.getElementById("rsvpForm");
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxwT4AIu3K8nRwvRV4vPDCB2XFn8JP3XvNj3Z4wMPDC32M4l_81b4_TWRU2vBeQHktS/exec";
+
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const rsvpStatus = document.getElementById("rsvpStatus");
+
+    const submitButton = rsvpForm.querySelector(".btn-submit");
+
+    // Ambil nilai form
+    const name = document.getElementById("rsvpName").value.trim();
+
+    const attendanceSelect = document.getElementById("rsvpAttendance");
+
+    const attendance =
+      attendanceSelect.options[attendanceSelect.selectedIndex].text;
+
+    const guests = document.getElementById("rsvpGuests").value;
+
+    const message = document.getElementById("rsvpMessage").value.trim();
+
+    // Data yang akan dikirim
+    const formData = {
+      name: name,
+      attendance: attendance,
+      guests: guests,
+      message: message,
+    };
+
+    // Status loading
+    rsvpStatus.innerHTML =
+      '<p style="color: var(--primary);">' + "Mengirim data..." + "</p>";
+
+    // Disable tombol
+    submitButton.disabled = true;
+    submitButton.style.opacity = "0.6";
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message);
+      }
+
+      // Berhasil
+      rsvpStatus.innerHTML =
+        '<p style="color: #2e7d32;">' +
+        "Terima kasih! Konfirmasi kehadiran Anda telah terkirim." +
+        "</p>";
+
+      // Kosongkan form
+      rsvpForm.reset();
+    } catch (error) {
+      console.error(error);
+
+      rsvpStatus.innerHTML =
+        '<p style="color: #c62828;">' +
+        "Maaf, terjadi kesalahan saat mengirim data. " +
+        "Silakan coba lagi." +
+        "</p>";
+    } finally {
+      // Aktifkan tombol kembali
+      submitButton.disabled = false;
+      submitButton.style.opacity = "1";
+    }
+  });
 }
 
 // ===== WISHES FORM =====
 function initWishesForm() {
-  const wishesForm = document.getElementById('wishesForm');
+  const wishesForm = document.getElementById("wishesForm");
   if (wishesForm) {
-    wishesForm.addEventListener('submit', function(e) {
+    wishesForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const formData = new FormData(this);
       const data = {
-        name: formData.get('name'),
-        status: formData.get('status'),
-        message: formData.get('message')
+        name: formData.get("name"),
+        status: formData.get("status"),
+        message: formData.get("message"),
       };
-      const wishesList = document.getElementById('wishesList');
-      const wishCard = document.createElement('div');
-      wishCard.className = 'wish-card';
+      const wishesList = document.getElementById("wishesList");
+      const wishCard = document.createElement("div");
+      wishCard.className = "wish-card";
       wishCard.innerHTML = `<div class="wish-header"><span class="wish-name">${data.name}</span><span class="wish-status">${data.status}</span></div><p class="wish-text">${data.message}</p>`;
       wishesList.insertBefore(wishCard, wishesList.firstChild);
       wishesForm.reset();
-      alert('Ucapan Anda berhasil terkirim!');
+      alert("Ucapan Anda berhasil terkirim!");
     });
   }
 }
 
 // ===== INIT =====
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initGuestName();
   initAllSparkles();
   initPenutupStars();

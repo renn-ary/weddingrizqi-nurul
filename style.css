@@ -116,7 +116,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   display: flex; flex-direction: column; align-items: center;
   width: 100%; gap: 8px;
   animation: fadeInUp 1s ease 0.5s both;
-  margin-top: -30px;
+  margin-top: -60px;
 }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 

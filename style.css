@@ -80,6 +80,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   z-index: 50;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   transform-origin: top center;
   transform-style: preserve-3d;
 }
@@ -104,8 +105,9 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .cover-content {
   position: relative; z-index: 2;
   height: 100vh; max-height: 100vh;
+  height: 100dvh; max-height: 100dvh;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-start;
+  align-items: center; justify-content: center;
   padding: 0 20px;
   box-sizing: border-box;
   text-align: center;
@@ -344,11 +346,11 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 /* ===== AUTO EXTRACTED STYLES ===== */
 .sty-1 { display:none; }
 .sty-2 { background-image:url('Assets/Image/covermempelai.jpeg') }
-.sty-3 { flex:80 1 0%;min-height:0;width:100%; }
+.sty-3 { display: none; }
 .sty-4 { font-size:14px;opacity:0.8;margin-top:6px;margin-bottom:2px; }
 .sty-5 { font-size:clamp(18px,4.5vw,26px);color:#a67777;margin-bottom:20px;font-weight:500; }
 .sty-6 { position:relative;z-index:10;background:rgba(255,255,255,0.95);color:#5C5C5C;border:2px solid #E8E8E8;box-shadow:0 8px 32px rgba(0,0,0,0.2); }
-.sty-7 { flex:20 1 0%;min-height:0;width:100%; }
+.sty-7 { display: none; }
 .sty-8 { display:none; }
 .sty-9 { display:none; }
 .sty-10 { display:none; }

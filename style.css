@@ -116,6 +116,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
   display: flex; flex-direction: column; align-items: center;
   width: 100%; gap: 8px;
   animation: fadeInUp 1s ease 0.5s both;
+  margin-top: -30px;
 }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -148,12 +149,24 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 
 /* ===== BUTTONS ===== */
 .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: #a67777;
-  color: #fff; border: 2px solid #a67777;
-  padding: 16px 40px; border-radius: 50px;
-  font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 16px;
-  cursor: pointer; box-shadow: 0 8px 32px rgba(166,119,119,0.45);
-  transition: all 0.3s ease; position: relative; overflow: hidden; outline: none;
+  color: #fff;
+  border: none;
+  padding: 10px 42px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(166,119,119,0.45);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  outline: none;
   animation: bobbing 2s ease-in-out 1.6s infinite;
 }
 @keyframes bobbing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
@@ -161,7 +174,7 @@ h2 { font-family: 'Anthela', 'Great Vibes', 'Dancing Script', cursive !important
 .btn-primary:focus, .btn-primary:active { outline: none; }
 .btn-primary::before {
   content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(166,119,119,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   transition: left 0.5s ease;
 }
 .btn-primary:hover::before { left: 100%; }
